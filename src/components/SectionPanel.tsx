@@ -16,7 +16,7 @@ const panelists = [
     company: "Founder & CEO, ThreePoint Labs",
     bio: "James is one of the world's most sought-after voices on AI strategy and enterprise transformation. Formerly Head of Emerging Platforms at The LEGO Group (launched LEGO Life to 2m+ users) and CEO of Vixen Labs — the UK's pioneering voice AI studio, exited to House 337 in 2023. Author of AI @ Work (Bloomsbury, 2026). Currently Fractional Head of AI at Elvis London and Dunham & Company. As Convener, James chairs all panel sessions, shapes the research agenda, and leads the Copenhagen and New York workshops.",
     shortBio: "AI strategist, author, and former CEO of Vixen Labs — the UK's pioneering voice AI studio. Convener & Chair of this programme.",
-    photo: "/threepoint-icon.png",
+    photo: "/panelists/james-poulter.jpg",
     color: "orange",
     isConvener: true,
   },

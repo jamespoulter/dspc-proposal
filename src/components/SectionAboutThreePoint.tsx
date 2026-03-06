@@ -31,11 +31,27 @@ export default function SectionAboutThreePoint() {
 
       <div className="max-w-6xl mx-auto w-full z-10">
 
+        {/* ThreePoint logo */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Image
+            src="/threepoint-logo-transparent.png"
+            alt="ThreePoint Labs"
+            width={160}
+            height={46}
+            className="h-10 w-auto opacity-90"
+          />
+        </motion.div>
+
         {/* Section label */}
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
           className="text-orange text-sm font-medium tracking-widest uppercase mb-4 block"
         >
           Your Partner
@@ -74,13 +90,13 @@ export default function SectionAboutThreePoint() {
           >
             <div className="flex items-start gap-5">
               {/* JP photo placeholder — orange initial circle */}
-              <div className="w-20 h-20 rounded-full bg-orange/20 border-2 border-orange/40 flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <div className="w-20 h-20 rounded-full border-2 border-orange/40 flex-shrink-0 overflow-hidden">
                 <Image
-                  src="/threepoint-icon.png"
+                  src="/panelists/james-poulter.jpg"
                   alt="James Poulter"
                   width={80}
                   height={80}
-                  className="object-cover w-full h-full opacity-80"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <div>

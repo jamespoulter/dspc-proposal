@@ -21,9 +21,9 @@ const sections = [
   { id: "gap", label: "The Gap" },
   { id: "delivers", label: "Delivers" },
   { id: "programme", label: "Programme" },
-  { id: "about", label: "ThreePoint" },
   { id: "panel", label: "Panel" },
   { id: "pricing", label: "Tiers" },
+  { id: "about", label: "ThreePoint" },
   { id: "next", label: "Next Steps" },
 ];
 
@@ -136,12 +136,7 @@ export default function ProposalPage() {
         <Section5Programme />
       </div>
 
-      {/* Section 6: About ThreePoint */}
-      <div id="about">
-        <SectionAboutThreePoint />
-      </div>
-
-      {/* Section 7: The Panel */}
+      {/* Section 6: The Panel */}
       <div id="panel">
         <SectionPanel />
       </div>
@@ -151,7 +146,12 @@ export default function ProposalPage() {
         <Section6PricingTiers />
       </div>
 
-      {/* Section 8: Next Steps */}
+      {/* Section 8: About ThreePoint */}
+      <div id="about">
+        <SectionAboutThreePoint />
+      </div>
+
+      {/* Section 9: Next Steps */}
       <div id="next">
         <Section7NextSteps />
       </div>
