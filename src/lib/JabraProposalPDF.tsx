@@ -7,657 +7,614 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-// Branding colors
+// Branding colors - formal SOW palette
 const colors = {
-  navy: "#0f171f",
   orange: "#f46c42",
-  gold: "#c59f4d",
-  cream: "#efd6bd",
-  creamLight: "rgba(239, 214, 189, 0.7)",
-  creamMuted: "rgba(239, 214, 189, 0.5)",
+  nearBlack: "#1a1a1a",
+  darkGrey: "#2d2d2d",
+  bodyText: "#333333",
+  mutedText: "#555555",
+  captionText: "#888888",
+  lightGrey: "#f5f5f5",
+  tableAlt: "#fafafa",
+  tableBorder: "#dddddd",
+  goldHighlight: "#fff5f0",
+  rule: "#eeeeee",
 };
 
 // Styles
 const styles = StyleSheet.create({
+  // Base page
   page: {
-    backgroundColor: colors.navy,
-    padding: 40,
+    backgroundColor: "#ffffff",
+    paddingTop: 50,
+    paddingBottom: 70,
+    paddingHorizontal: 50,
     fontFamily: "Helvetica",
-    position: "relative",
+    fontSize: 10,
+    color: colors.bodyText,
+    lineHeight: 1.5,
   },
   // Cover page
   coverPage: {
-    backgroundColor: colors.navy,
-    padding: 40,
+    backgroundColor: "#ffffff",
+    padding: 50,
     fontFamily: "Helvetica",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
     height: "100%",
   },
-  coverTopLeft: {
-    fontSize: 18,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-  },
-  coverCenter: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  coverTitle: {
-    fontSize: 32,
-    fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    textAlign: "center",
-    marginBottom: 12,
-  },
-  coverSubtitle: {
-    fontSize: 16,
-    color: colors.creamLight,
-    textAlign: "center",
-    marginBottom: 24,
-  },
-  coverRule: {
+  coverTopRule: {
     width: "100%",
     height: 2,
     backgroundColor: colors.orange,
-    marginTop: 24,
+    marginBottom: 20,
   },
-  coverFooter: {
-    fontSize: 10,
-    color: colors.creamMuted,
-    textAlign: "center",
+  coverLogo: {
+    flexDirection: "row",
+    marginBottom: 80,
   },
-  // Section elements
-  sectionLabel: {
+  coverLogoThreePoint: {
+    fontSize: 16,
+    fontFamily: "Helvetica-Bold",
+    color: colors.orange,
+  },
+  coverLogoLabs: {
+    fontSize: 16,
+    fontFamily: "Helvetica-Bold",
+    color: colors.mutedText,
+  },
+  coverContent: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  coverLabel: {
     fontSize: 8,
     fontFamily: "Helvetica-Bold",
     color: colors.orange,
     letterSpacing: 2,
+    marginBottom: 12,
+  },
+  coverTitle: {
+    fontSize: 28,
+    fontFamily: "Helvetica-Bold",
+    color: colors.nearBlack,
     marginBottom: 8,
   },
-  heading: {
-    fontSize: 20,
+  coverSubtitle: {
+    fontSize: 14,
+    color: colors.mutedText,
+    marginBottom: 40,
+  },
+  coverMeta: {
+    fontSize: 11,
+    color: colors.bodyText,
+    marginBottom: 6,
+  },
+  coverBottomRule: {
+    width: "100%",
+    height: 2,
+    backgroundColor: colors.orange,
+    marginTop: "auto",
+    marginBottom: 12,
+  },
+  coverFooter: {
+    fontSize: 8,
+    color: colors.captionText,
+    textAlign: "center",
+  },
+  // Header & Footer
+  header: {
+    position: "absolute",
+    top: 25,
+    left: 50,
+    right: 50,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontSize: 8,
+    color: colors.captionText,
+  },
+  footer: {
+    position: "absolute",
+    bottom: 25,
+    left: 50,
+    right: 50,
+    alignItems: "center",
+  },
+  footerPageNumber: {
+    fontSize: 9,
+    color: colors.bodyText,
+    marginBottom: 4,
+  },
+  footerCompany: {
+    fontSize: 7,
+    color: colors.captionText,
+  },
+  // Typography
+  sectionHeading: {
+    fontSize: 14,
     fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    marginBottom: 16,
+    color: colors.orange,
+    marginBottom: 12,
+    marginTop: 4,
+  },
+  subHeading: {
+    fontSize: 11,
+    fontFamily: "Helvetica-Bold",
+    color: colors.darkGrey,
+    marginBottom: 8,
+    marginTop: 16,
   },
   body: {
     fontSize: 10,
-    color: colors.cream,
-    lineHeight: 1.6,
-    marginBottom: 20,
+    color: colors.bodyText,
+    lineHeight: 1.5,
+    marginBottom: 12,
   },
-  // Stat boxes
-  statsRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 24,
-    gap: 12,
-  },
-  statBox: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: colors.orange,
-    padding: 16,
-    alignItems: "center",
-  },
-  statNumber: {
-    fontSize: 18,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-    marginBottom: 4,
-  },
-  statLabel: {
+  caption: {
     fontSize: 8,
-    color: colors.cream,
-    textAlign: "center",
-  },
-  // Two columns
-  twoColumns: {
-    flexDirection: "row",
-    gap: 20,
-    marginTop: 20,
-  },
-  column: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "rgba(239, 214, 189, 0.05)",
-    borderRadius: 4,
-  },
-  columnTitle: {
-    fontSize: 12,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-    marginBottom: 12,
-  },
-  bulletPoint: {
-    fontSize: 10,
-    color: colors.cream,
+    color: colors.captionText,
+    letterSpacing: 1,
+    textTransform: "uppercase",
     marginBottom: 6,
-    lineHeight: 1.4,
   },
-  // Deliverables
-  deliverableItem: {
+  // Lists
+  numberedItem: {
     flexDirection: "row",
-    marginBottom: 12,
-    alignItems: "flex-start",
+    marginBottom: 6,
   },
-  deliverableBullet: {
-    width: 6,
-    height: 6,
-    backgroundColor: colors.orange,
-    borderRadius: 3,
-    marginTop: 4,
-    marginRight: 12,
+  numberedNumber: {
+    width: 16,
+    fontSize: 10,
+    color: colors.bodyText,
   },
-  deliverableText: {
+  numberedText: {
     flex: 1,
     fontSize: 10,
-    color: colors.cream,
+    color: colors.bodyText,
     lineHeight: 1.5,
   },
-  // Phase boxes
-  phaseContainer: {
-    marginTop: 20,
-  },
-  phaseBox: {
+  // Tables
+  table: {
+    marginTop: 12,
     marginBottom: 16,
-    padding: 16,
-    backgroundColor: "rgba(239, 214, 189, 0.05)",
-    borderLeftWidth: 3,
-    borderLeftColor: colors.orange,
+    borderWidth: 0.5,
+    borderColor: colors.tableBorder,
   },
-  phaseTitle: {
-    fontSize: 12,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-    marginBottom: 4,
+  tableHeader: {
+    flexDirection: "row",
+    backgroundColor: colors.lightGrey,
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.tableBorder,
   },
-  phaseSubtitle: {
+  tableHeaderCell: {
     fontSize: 9,
-    color: colors.creamLight,
-    marginBottom: 8,
+    fontFamily: "Helvetica-Bold",
+    color: colors.nearBlack,
+    padding: 8,
   },
-  phaseDescription: {
-    fontSize: 10,
-    color: colors.cream,
-    lineHeight: 1.5,
+  tableRow: {
+    flexDirection: "row",
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.tableBorder,
   },
-  // Panel
+  tableRowAlt: {
+    flexDirection: "row",
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.tableBorder,
+    backgroundColor: colors.tableAlt,
+  },
+  tableCell: {
+    fontSize: 9,
+    color: colors.bodyText,
+    padding: 8,
+  },
+  tableCellBold: {
+    fontSize: 9,
+    fontFamily: "Helvetica-Bold",
+    color: colors.nearBlack,
+    padding: 8,
+  },
+  // Dividers
+  sectionRule: {
+    width: "100%",
+    height: 0.5,
+    backgroundColor: colors.rule,
+    marginVertical: 20,
+  },
+  // Special
   convenerBlock: {
-    marginBottom: 24,
-    padding: 16,
-    backgroundColor: "rgba(244, 108, 66, 0.1)",
-    borderLeftWidth: 3,
-    borderLeftColor: colors.orange,
+    marginBottom: 16,
   },
   convenerName: {
-    fontSize: 14,
-    fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    marginBottom: 4,
-  },
-  convenerRole: {
     fontSize: 10,
-    color: colors.creamLight,
-    marginBottom: 8,
+    fontFamily: "Helvetica-Bold",
+    color: colors.bodyText,
+    marginBottom: 4,
   },
   convenerBio: {
-    fontSize: 9,
-    color: colors.cream,
+    fontSize: 10,
+    color: colors.bodyText,
     lineHeight: 1.5,
   },
-  subheading: {
-    fontSize: 12,
-    fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    marginBottom: 12,
-    marginTop: 8,
-  },
-  panelistsGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 12,
-  },
-  panelistCard: {
-    width: "48%",
-    padding: 12,
-    backgroundColor: "rgba(239, 214, 189, 0.05)",
-    borderRadius: 4,
-    marginBottom: 4,
-  },
-  panelistName: {
-    fontSize: 10,
-    fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    marginBottom: 2,
-  },
-  panelistRole: {
-    fontSize: 8,
-    color: colors.creamLight,
-    marginBottom: 2,
-  },
-  panelistRegion: {
-    fontSize: 8,
-    color: colors.orange,
-  },
-  // Pricing tiers
-  tiersContainer: {
-    flexDirection: "row",
-    gap: 12,
-    marginTop: 16,
-  },
-  tierBox: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "rgba(239, 214, 189, 0.05)",
-    borderRadius: 4,
-  },
-  tierBoxGold: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "rgba(244, 108, 66, 0.1)",
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: colors.orange,
-  },
-  tierBadge: {
-    fontSize: 7,
-    fontFamily: "Helvetica-Bold",
-    color: colors.navy,
-    backgroundColor: colors.orange,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 2,
-    alignSelf: "flex-start",
-    marginBottom: 8,
-  },
-  tierName: {
-    fontSize: 10,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-    marginBottom: 4,
-  },
-  tierSubname: {
-    fontSize: 8,
-    color: colors.creamLight,
-    marginBottom: 8,
-  },
-  tierPrice: {
-    fontSize: 16,
-    fontFamily: "Helvetica-Bold",
-    color: colors.cream,
-    marginBottom: 4,
-  },
-  tierDuration: {
-    fontSize: 8,
-    color: colors.creamLight,
-    marginBottom: 12,
-  },
-  tierDeliverables: {
-    fontSize: 8,
-    color: colors.cream,
-    lineHeight: 1.5,
-  },
-  // About page
-  divider: {
+  bottomRule: {
     width: "100%",
     height: 1,
-    backgroundColor: colors.creamMuted,
-    marginVertical: 24,
+    backgroundColor: colors.orange,
+    marginTop: 20,
+    marginBottom: 8,
   },
-  contactBlock: {
-    marginTop: 16,
-  },
-  contactText: {
-    fontSize: 10,
-    color: colors.cream,
-    marginBottom: 4,
-  },
-  contactHighlight: {
-    fontSize: 10,
-    fontFamily: "Helvetica-Bold",
-    color: colors.orange,
-    marginBottom: 4,
-  },
-  finalFooter: {
-    marginTop: 24,
+  bottomText: {
     fontSize: 8,
-    color: colors.creamMuted,
-    fontStyle: "italic",
-  },
-  // Page footer
-  pageFooter: {
-    position: "absolute",
-    bottom: 30,
-    left: 40,
-    right: 40,
-    borderTopWidth: 0.5,
-    borderTopColor: colors.orange,
-    paddingTop: 8,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  footerText: {
-    fontSize: 8,
-    color: colors.creamMuted,
+    color: colors.captionText,
+    textAlign: "center",
   },
 });
 
-// Footer component for pages 2-8
+// Header component
+const PageHeader = () => (
+  <View style={styles.header} fixed>
+    <Text>ThreePoint Labs | Commercial in Confidence</Text>
+    <Text>March 2026</Text>
+  </View>
+);
+
+// Footer component
 const PageFooter = ({ pageNumber }: { pageNumber: number }) => (
-  <View style={styles.pageFooter} fixed>
-    <Text style={styles.footerText}>
-      ThreePoint Labs — Jabra Voice AI Research Programme
+  <View style={styles.footer} fixed>
+    <Text style={styles.footerPageNumber}>{pageNumber}</Text>
+    <Text style={styles.footerCompany}>
+      ThreePoint Labs Limited | Company No. 11734247 | threepoint.io
     </Text>
-    <Text style={styles.footerText}>{pageNumber}</Text>
   </View>
 );
 
 // Cover Page
 const CoverPage = () => (
   <Page size="A4" style={styles.coverPage}>
-    <Text style={styles.coverTopLeft}>ThreePoint Labs</Text>
-    <View style={styles.coverCenter}>
-      <Text style={styles.coverTitle}>Voice AI Research Programme</Text>
-      <Text style={styles.coverSubtitle}>
-        A Strategic Partnership Proposal for Jabra
-      </Text>
-      <View style={styles.coverRule} />
+    <View style={styles.coverTopRule} />
+    <View style={styles.coverLogo}>
+      <Text style={styles.coverLogoThreePoint}>ThreePoint</Text>
+      <Text style={styles.coverLogoLabs}>Labs</Text>
     </View>
+    <View style={styles.coverContent}>
+      <Text style={styles.coverLabel}>COMMERCIAL PROPOSAL</Text>
+      <Text style={styles.coverTitle}>Voice AI Research Programme</Text>
+      <Text style={styles.coverSubtitle}>A Strategic Research Partnership</Text>
+      <Text style={styles.coverMeta}>Prepared for: Jabra / GN Group</Text>
+      <Text style={styles.coverMeta}>Prepared by: ThreePoint Labs Limited</Text>
+      <Text style={styles.coverMeta}>Date: March 2026</Text>
+      <Text style={styles.coverMeta}>Version: 1.0 — Confidential</Text>
+    </View>
+    <View style={styles.coverBottomRule} />
     <Text style={styles.coverFooter}>
-      Prepared exclusively for Jabra | Confidential | 2026
+      ThreePoint Labs Limited | Registered in England & Wales | Company No. 11734247
     </Text>
   </Page>
 );
 
-// Page 2 - The Market Moment
-const MarketMomentPage = () => (
+// Page 2 - Executive Summary
+const ExecutiveSummaryPage = () => (
   <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>MARKET CONTEXT</Text>
-    <Text style={styles.heading}>
-      Voice AI is Reshaping the Competitive Landscape
+    <PageHeader />
+    <Text style={styles.sectionHeading}>1. Executive Summary</Text>
+    <Text style={styles.body}>
+      ThreePoint Labs proposes a structured Voice AI Research Programme for Jabra, designed to establish Jabra as the authoritative voice in the enterprise voice AI conversation. Delivered over 3–12 months depending on tier, the programme combines independent market research, a curated expert panel, and high-profile convened events to produce proprietary data, thought leadership content, and sustained media coverage.
     </Text>
     <Text style={styles.body}>
-      The voice AI market is projected to reach $50B by 2029, growing at 23.7%
-      CAGR. 67% of enterprise technology decisions now involve voice interface
-      evaluation. Jabra sits at a unique inflection point — trusted hardware
-      brand, strong enterprise relationships, but no authoritative voice in the
-      AI conversation that will define the next decade of work technology.
+      This document sets out the programme scope, deliverables, timeline, investment levels, and terms of engagement.
     </Text>
-    <View style={styles.statsRow}>
-      <View style={styles.statBox}>
-        <Text style={styles.statNumber}>$50B</Text>
-        <Text style={styles.statLabel}>Market by 2029</Text>
-      </View>
-      <View style={styles.statBox}>
-        <Text style={styles.statNumber}>23.7%</Text>
-        <Text style={styles.statLabel}>CAGR</Text>
-      </View>
-      <View style={styles.statBox}>
-        <Text style={styles.statNumber}>67%</Text>
-        <Text style={styles.statLabel}>
-          of enterprise tech decisions involve voice AI
-        </Text>
-      </View>
+
+    <Text style={styles.subHeading}>1.1 Programme Objectives</Text>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>1.</Text>
+      <Text style={styles.numberedText}>Establish Jabra as the leading voice in enterprise Voice AI research</Text>
     </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>2.</Text>
+      <Text style={styles.numberedText}>Generate proprietary data and benchmarks owned by Jabra</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>3.</Text>
+      <Text style={styles.numberedText}>Build sustained thought leadership through expert panel and published research</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>4.</Text>
+      <Text style={styles.numberedText}>Create media-ready content for enterprise and technology press</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>5.</Text>
+      <Text style={styles.numberedText}>Differentiate Jabra from hardware-only competitors entering the AI space</Text>
+    </View>
+
+    <Text style={styles.subHeading}>1.2 Programme Convener</Text>
+    <Text style={styles.body}>
+      The programme is convened and chaired by James Poulter, Founder of ThreePoint Labs and one of the UK's most sought-after AI strategists. James is the author of AI @ Work (Bloomsbury, August 2026), has delivered 250+ keynotes globally, and holds fractional Head of AI positions at Elvis London and Dunham & Company. He has previously led AI transformation programmes for Amazon, Verizon, LEGO, Bosch, Bloomsbury, and Universal Music.
+    </Text>
     <PageFooter pageNumber={2} />
   </Page>
 );
 
-// Page 3 - The Gap
-const TheGapPage = () => (
+// Page 3 - Programme Scope
+const ProgrammeScopePage = () => (
   <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>THE OPPORTUNITY</Text>
-    <Text style={styles.heading}>Where Jabra Could Lead</Text>
+    <PageHeader />
+    <Text style={styles.sectionHeading}>2. Programme Scope & Deliverables</Text>
     <Text style={styles.body}>
-      Your competitors are racing to establish thought leadership in voice AI.
-      McKinsey, Deloitte, and BCG are producing annual reports that shape
-      enterprise buying decisions. Jabra has the credibility, the data, and the
-      customer relationships to own this conversation — but needs a structured
-      research programme to get there.
+      The programme is structured in three phases across three investment tiers. All tiers include the core research framework; higher tiers extend geographic reach, add convened events, and deepen the output cadence.
     </Text>
-    <View style={styles.twoColumns}>
-      <View style={styles.column}>
-        <Text style={styles.columnTitle}>The Risk of Waiting</Text>
-        <Text style={styles.bulletPoint}>• Brand credibility gap widens</Text>
-        <Text style={styles.bulletPoint}>• Losing narrative control to competitors</Text>
-        <Text style={styles.bulletPoint}>• Competitor research filling the void</Text>
+
+    <Text style={styles.subHeading}>2.1 Research Framework</Text>
+    <Text style={styles.body}>
+      All tiers are built on ThreePoint's proprietary Voice AI @ Work research methodology, combining: quantitative survey research (enterprise decision-makers), qualitative expert interviews (panel members + senior practitioners), competitive landscape analysis, and media sentiment tracking.
+    </Text>
+
+    <Text style={styles.subHeading}>2.2 Deliverables by Tier</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "40%" }]}>Deliverable</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Bronze</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Silver</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Gold</Text>
       </View>
-      <View style={styles.column}>
-        <Text style={styles.columnTitle}>The Opportunity</Text>
-        <Text style={styles.bulletPoint}>• First-mover advantage in voice AI thought leadership</Text>
-        <Text style={styles.bulletPoint}>• 12-month head start on competitors</Text>
-        <Text style={styles.bulletPoint}>• Proprietary data as competitive moat</Text>
+      {[
+        ["Baseline Research Report", "✓", "✓", "✓"],
+        ["Markets Covered", "1", "2", "5"],
+        ["Expert Panel Sessions", "2", "4", "6"],
+        ["Quarterly Research Updates", "—", "—", "✓"],
+        ["Copenhagen Workshop", "—", "✓", "✓"],
+        ["New York Summit", "—", "—", "✓"],
+        ["Jabra Voice AI Index", "—", "—", "✓"],
+        ["Interim Research Report", "—", "✓", "✓"],
+        ["Annual Report (full)", "—", "✓", "✓"],
+        ["Media Amplification Programme", "—", "—", "✓"],
+        ["Executive Briefing Series", "—", "—", "✓"],
+        ["Whitepaper Content Programme", "—", "✓", "✓"],
+      ].map((row, i) => (
+        <View key={i} style={i % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+          <Text style={[styles.tableCell, { width: "40%" }]}>{row[0]}</Text>
+          <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>{row[1]}</Text>
+          <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>{row[2]}</Text>
+          <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>{row[3]}</Text>
+        </View>
+      ))}
+    </View>
+
+    <Text style={styles.subHeading}>2.3 Programme Phases (Gold / Full Programme)</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "30%" }]}>Phase</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%" }]}>Period</Text>
+        <Text style={[styles.tableHeaderCell, { width: "50%" }]}>Key Activities</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "30%" }]}>Phase 1: Foundation</Text>
+        <Text style={[styles.tableCell, { width: "20%" }]}>Months 1–3</Text>
+        <Text style={[styles.tableCell, { width: "50%" }]}>Panel assembly, research design, baseline data collection, interim scoping report</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCell, { width: "30%" }]}>Phase 2: Deep Research</Text>
+        <Text style={[styles.tableCell, { width: "20%" }]}>Months 4–8</Text>
+        <Text style={[styles.tableCell, { width: "50%" }]}>Global survey (5 markets), expert interviews, Copenhagen Workshop, interim report publication</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "30%" }]}>Phase 3: Synthesis & Launch</Text>
+        <Text style={[styles.tableCell, { width: "20%" }]}>Months 9–12</Text>
+        <Text style={[styles.tableCell, { width: "50%" }]}>Final analysis, New York Summit, annual report, Jabra Voice AI Index launch, media rollout</Text>
       </View>
     </View>
     <PageFooter pageNumber={3} />
   </Page>
 );
 
-// Page 4 - What This Delivers
-const DeliversPage = () => (
+// Page 4 - Expert Panel
+const ExpertPanelPage = () => (
   <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>PROGRAMME OUTCOMES</Text>
-    <Text style={styles.heading}>Five Strategic Deliverables</Text>
-    <View style={{ marginTop: 8 }}>
-      <View style={styles.deliverableItem}>
-        <View style={styles.deliverableBullet} />
-        <Text style={styles.deliverableText}>
-          Proprietary Voice AI @ Work Research Report (annual, with quarterly
-          updates)
-        </Text>
+    <PageHeader />
+    <Text style={styles.sectionHeading}>3. Expert Panel</Text>
+    <Text style={styles.body}>
+      The programme is supported by a panel of five globally recognised Voice AI experts, selected for their combination of research credibility, industry influence, and geographic reach. Panel members contribute to research design, expert interviews, and convened workshop sessions.
+    </Text>
+
+    <Text style={styles.subHeading}>3.1 Programme Convener & Chair</Text>
+    <View style={styles.convenerBlock}>
+      <Text style={styles.convenerName}>James Poulter — Founder, ThreePoint Labs</Text>
+      <Text style={styles.convenerBio}>
+        AI strategist, keynote speaker, and author. Former Head of Emerging Platforms, The LEGO Group; CEO, Vixen Labs (exited to House 337, 2023). Author of AI @ Work (Bloomsbury, 2026). Fractional Head of AI, Elvis London and Dunham & Company.
+      </Text>
+    </View>
+
+    <Text style={styles.subHeading}>3.2 Panel Members</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "20%" }]}>Name</Text>
+        <Text style={[styles.tableHeaderCell, { width: "55%" }]}>Role & Credentials</Text>
+        <Text style={[styles.tableHeaderCell, { width: "25%" }]}>Region</Text>
       </View>
-      <View style={styles.deliverableItem}>
-        <View style={styles.deliverableBullet} />
-        <Text style={styles.deliverableText}>
-          Global Expert Panel — Copenhagen Workshop + New York Summit
-        </Text>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCellBold, { width: "20%" }]}>Saba Akhtar</Text>
+        <Text style={[styles.tableCell, { width: "55%" }]}>Conversational AI & Voice UX Expert. Certified conversational designer; Founder, Women in Voice Germany</Text>
+        <Text style={[styles.tableCell, { width: "25%" }]}>Europe</Text>
       </View>
-      <View style={styles.deliverableItem}>
-        <View style={styles.deliverableBullet} />
-        <Text style={styles.deliverableText}>
-          Executive Briefing Series — tailored for enterprise customers and
-          press
-        </Text>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCellBold, { width: "20%" }]}>Pete Erickson</Text>
+        <Text style={[styles.tableCell, { width: "55%" }]}>Founder, VOICE Summit — the world's premier voice technology conference. Director, Tech Ecosystem Institute</Text>
+        <Text style={[styles.tableCell, { width: "25%" }]}>United States</Text>
       </View>
-      <View style={styles.deliverableItem}>
-        <View style={styles.deliverableBullet} />
-        <Text style={styles.deliverableText}>
-          Jabra Voice AI Index — recurring benchmark metric (owned by Jabra)
-        </Text>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCellBold, { width: "20%" }]}>Noelle Russell</Text>
+        <Text style={[styles.tableCell, { width: "55%" }]}>Global AI Solutions Lead, Accenture. Led AI teams at Microsoft, Amazon Alexa, AWS, IBM, NPR. Founder, WomenIn.AI</Text>
+        <Text style={[styles.tableCell, { width: "25%" }]}>United States</Text>
       </View>
-      <View style={styles.deliverableItem}>
-        <View style={styles.deliverableBullet} />
-        <Text style={styles.deliverableText}>
-          Strategic Content Programme — whitepapers, keynote content, media
-          amplification
-        </Text>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCellBold, { width: "20%" }]}>Susan Westwater</Text>
+        <Text style={[styles.tableCell, { width: "55%" }]}>Co-author, Voice Strategy (Amazon #1, 2019) and Voice Marketing (2023). Advises global enterprise brands on voice AI strategy</Text>
+        <Text style={[styles.tableCell, { width: "25%" }]}>United States</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCellBold, { width: "20%" }]}>Prof. Toby Walsh</Text>
+        <Text style={[styles.tableCell, { width: "55%" }]}>Professor of AI, UNSW Sydney. Author of multiple AI books including 2062: The World That AI Made. Advisor to governments and enterprises globally</Text>
+        <Text style={[styles.tableCell, { width: "25%" }]}>Australia / APAC</Text>
       </View>
     </View>
     <PageFooter pageNumber={4} />
   </Page>
 );
 
-// Page 5 - The Programme
-const ProgrammePage = () => (
+// Page 5 - Investment
+const InvestmentPage = () => (
   <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>THE PROGRAMME</Text>
-    <Text style={styles.heading}>A 12-Month Research Journey</Text>
-    <View style={styles.phaseContainer}>
-      <View style={styles.phaseBox}>
-        <Text style={styles.phaseTitle}>Phase 1: Foundation & Baseline</Text>
-        <Text style={styles.phaseSubtitle}>Months 1–3</Text>
-        <Text style={styles.phaseDescription}>
-          Market scoping, panel assembly, baseline research design, initial data
-          collection
-        </Text>
+    <PageHeader />
+    <Text style={styles.sectionHeading}>4. Investment</Text>
+    <Text style={styles.body}>
+      Three investment tiers are available, designed to match budget appetite and strategic ambition. All prices are exclusive of VAT.
+    </Text>
+
+    <Text style={styles.subHeading}>4.1 Tier Overview</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "25%" }]}></Text>
+        <Text style={[styles.tableHeaderCell, { width: "25%", textAlign: "center" }]}>Bronze — Foundation</Text>
+        <Text style={[styles.tableHeaderCell, { width: "25%", textAlign: "center" }]}>Silver — Growth</Text>
+        <Text style={[styles.tableHeaderCell, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>Gold — Full Programme{"\n"}(Recommended)</Text>
       </View>
-      <View style={styles.phaseBox}>
-        <Text style={styles.phaseTitle}>Phase 2: Deep Research</Text>
-        <Text style={styles.phaseSubtitle}>Months 4–8</Text>
-        <Text style={styles.phaseDescription}>
-          Global survey (5 markets), expert interviews, Copenhagen Workshop,
-          interim report
-        </Text>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCellBold, { width: "25%" }]}>Investment</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>£95,000</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>£215,000</Text>
+        <Text style={[styles.tableCellBold, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>£419,500</Text>
       </View>
-      <View style={styles.phaseBox}>
-        <Text style={styles.phaseTitle}>Phase 3: Synthesis & Launch</Text>
-        <Text style={styles.phaseSubtitle}>Months 9–12</Text>
-        <Text style={styles.phaseDescription}>
-          Final analysis, New York Summit, annual report, media rollout, Jabra
-          Voice AI Index launch
-        </Text>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCellBold, { width: "25%" }]}>Duration</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>3 months</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>12 months</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>12 months</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCellBold, { width: "25%" }]}>Markets</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>1</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>2</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>5</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCellBold, { width: "25%" }]}>Recommended for</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>Initial proof of concept</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>Established research programme</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>Full market leadership play</Text>
       </View>
     </View>
+
+    <Text style={styles.subHeading}>4.2 Gold Programme — Investment Breakdown</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "70%" }]}>Item</Text>
+        <Text style={[styles.tableHeaderCell, { width: "30%", textAlign: "right" }]}>Value</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Professional Fees (James Poulter + ThreePoint team)</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£246,000</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Panel Honoraria (5 experts × 12 months)</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£60,000</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Research Partner: Delineate</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£30,000–80,000</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Event Production: Copenhagen Workshop</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£18,000</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Event Production: New York Summit</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£24,000</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCell, { width: "70%" }]}>Content & Media Programme</Text>
+        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£15,500</Text>
+      </View>
+      <View style={[styles.tableRow, { backgroundColor: colors.lightGrey }]}>
+        <Text style={[styles.tableCellBold, { width: "70%" }]}>Total Investment</Text>
+        <Text style={[styles.tableCellBold, { width: "30%", textAlign: "right" }]}>£419,500</Text>
+      </View>
+    </View>
+
+    <Text style={styles.subHeading}>4.3 Payment Terms</Text>
+    <Text style={styles.body}>
+      Invoiced in quarterly instalments. 50% deposit on contract execution. Remaining 50% across three equal quarterly payments. All invoices payable within 30 days. Prices quoted in GBP and exclude VAT.
+    </Text>
     <PageFooter pageNumber={5} />
   </Page>
 );
 
-// Page 6 - The Panel
-const PanelPage = () => (
-  <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>EXPERT PANEL</Text>
-    <Text style={styles.heading}>World-Class Expertise</Text>
-    <Text style={styles.subheading}>Programme Convener & Chair</Text>
-    <View style={styles.convenerBlock}>
-      <Text style={styles.convenerName}>James Poulter</Text>
-      <Text style={styles.convenerRole}>
-        Founder, ThreePoint Labs | Author, AI @ Work (Bloomsbury, 2026)
-      </Text>
-      <Text style={styles.convenerBio}>
-        One of the UK's most sought-after AI strategists with 20+ years in
-        digital transformation and 250+ keynotes delivered globally. Trusted
-        advisor to Amazon, Verizon, LEGO, Bosch, and Universal Music.
-      </Text>
-    </View>
-    <Text style={styles.subheading}>Panel Members</Text>
-    <View style={styles.panelistsGrid}>
-      <View style={styles.panelistCard}>
-        <Text style={styles.panelistName}>Saba Akhtar</Text>
-        <Text style={styles.panelistRole}>Conversational AI & Voice UX Expert</Text>
-        <Text style={styles.panelistRegion}>Europe</Text>
-      </View>
-      <View style={styles.panelistCard}>
-        <Text style={styles.panelistName}>Pete Erickson</Text>
-        <Text style={styles.panelistRole}>Founder, VOICE Summit</Text>
-        <Text style={styles.panelistRegion}>United States</Text>
-      </View>
-      <View style={styles.panelistCard}>
-        <Text style={styles.panelistName}>Noelle Russell</Text>
-        <Text style={styles.panelistRole}>AI Solutions Lead, Accenture</Text>
-        <Text style={styles.panelistRegion}>United States</Text>
-      </View>
-      <View style={styles.panelistCard}>
-        <Text style={styles.panelistName}>Susan Westwater</Text>
-        <Text style={styles.panelistRole}>Co-author, Voice Strategy</Text>
-        <Text style={styles.panelistRegion}>United States</Text>
-      </View>
-      <View style={styles.panelistCard}>
-        <Text style={styles.panelistName}>Toby Walsh</Text>
-        <Text style={styles.panelistRole}>Professor of AI, UNSW Sydney</Text>
-        <Text style={styles.panelistRegion}>APAC</Text>
-      </View>
-    </View>
-    <PageFooter pageNumber={6} />
-  </Page>
-);
-
-// Page 7 - Investment Tiers
-const InvestmentPage = () => (
-  <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>INVESTMENT</Text>
-    <Text style={styles.heading}>Choose Your Level</Text>
-    <View style={styles.tiersContainer}>
-      <View style={styles.tierBox}>
-        <Text style={styles.tierName}>BRONZE</Text>
-        <Text style={styles.tierSubname}>Foundation</Text>
-        <Text style={styles.tierPrice}>£95,000</Text>
-        <Text style={styles.tierDuration}>3 months</Text>
-        <Text style={styles.tierDeliverables}>
-          • Baseline research report{"\n"}• 1 market{"\n"}• 2 expert panel
-          sessions
-        </Text>
-      </View>
-      <View style={styles.tierBox}>
-        <Text style={styles.tierName}>SILVER</Text>
-        <Text style={styles.tierSubname}>Growth</Text>
-        <Text style={styles.tierPrice}>£215,000</Text>
-        <Text style={styles.tierDuration}>12 months</Text>
-        <Text style={styles.tierDeliverables}>
-          • All Bronze deliverables{"\n"}• Copenhagen Workshop{"\n"}• 2 markets
-          {"\n"}• Interim report
-        </Text>
-      </View>
-      <View style={styles.tierBoxGold}>
-        <Text style={styles.tierBadge}>RECOMMENDED</Text>
-        <Text style={styles.tierName}>GOLD</Text>
-        <Text style={styles.tierSubname}>Full Programme</Text>
-        <Text style={styles.tierPrice}>£419,500</Text>
-        <Text style={styles.tierDuration}>12 months</Text>
-        <Text style={styles.tierDeliverables}>
-          • All Silver deliverables{"\n"}• New York Summit{"\n"}• 5 markets
-          {"\n"}• Jabra Voice AI Index{"\n"}• Quarterly updates{"\n"}• Full
-          media amplification
-        </Text>
-      </View>
-    </View>
-    <PageFooter pageNumber={7} />
-  </Page>
-);
-
-// Page 8 - About & Next Steps
+// Page 6 - About & Terms
 const AboutPage = () => (
   <Page size="A4" style={styles.page}>
-    <Text style={styles.sectionLabel}>YOUR PARTNER</Text>
-    <Text style={styles.heading}>ThreePoint Labs</Text>
+    <PageHeader />
+    <Text style={styles.sectionHeading}>5. About ThreePoint Labs</Text>
     <Text style={styles.body}>
-      ThreePoint Labs is an AI transformation consultancy founded by James
-      Poulter — one of the UK's most sought-after AI strategists. With 20+ years
-      in digital transformation and 250+ keynotes delivered globally, ThreePoint
-      brings both the strategic credibility and the operational expertise to run
-      a programme of this scale. Trusted by Amazon, Verizon, LEGO, Bosch,
-      Bloomsbury, and Universal Music.
+      ThreePoint Labs Limited is a UK-registered AI transformation consultancy (Company No. 11734247). Founded by James Poulter, ThreePoint helps corporations, agencies, and non-profits navigate AI transformation with practical, ethical strategies. ThreePoint has advised organisations including Amazon, Verizon, LEGO, Bosch, Bloomsbury, and Universal Music. James Poulter serves as Fractional Head of AI at Elvis London and Dunham & Company, and sits on the boards of Christian Aid and Christian Vision.
     </Text>
-    <View style={styles.divider} />
-    <Text style={styles.sectionLabel}>NEXT STEPS</Text>
-    <Text style={styles.body}>
-      To proceed or discuss further, please contact:
-    </Text>
-    <View style={styles.contactBlock}>
-      <Text style={styles.contactHighlight}>
-        James Poulter | jp@threepoint.io | threepoint.io
-      </Text>
-      <Text style={styles.contactText}>
-        Programme coordination: Jemma | jemma@poulterventures.com
-      </Text>
+
+    <Text style={styles.sectionHeading}>6. Proposed Next Steps</Text>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>1.</Text>
+      <Text style={styles.numberedText}>Review this proposal with relevant stakeholders</Text>
     </View>
-    <Text style={styles.finalFooter}>
-      All prices exclude VAT. This proposal is confidential and prepared
-      exclusively for Jabra.
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>2.</Text>
+      <Text style={styles.numberedText}>Schedule a discovery call with James Poulter to discuss programme customisation</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>3.</Text>
+      <Text style={styles.numberedText}>Identify preferred investment tier and confirm scope</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>4.</Text>
+      <Text style={styles.numberedText}>ThreePoint to issue formal Statement of Work and contract</Text>
+    </View>
+    <View style={styles.numberedItem}>
+      <Text style={styles.numberedNumber}>5.</Text>
+      <Text style={styles.numberedText}>Programme kick-off within 2 weeks of contract execution</Text>
+    </View>
+
+    <Text style={styles.subHeading}>6.1 Contact</Text>
+    <Text style={styles.body}>
+      James Poulter | Founder, ThreePoint Labs{"\n"}
+      jp@threepoint.io | threepoint.io
     </Text>
-    <PageFooter pageNumber={8} />
+    <Text style={styles.body}>
+      Programme Coordination:{"\n"}
+      Jemma | jemma@poulterventures.com{"\n"}
+      Subject line: Jabra Voice AI Programme — [Your name]
+    </Text>
+
+    <Text style={styles.sectionHeading}>7. Confidentiality</Text>
+    <Text style={styles.body}>
+      This proposal is submitted in confidence and is intended solely for the use of the named recipient. It may not be reproduced, distributed, or disclosed to any third party without the prior written consent of ThreePoint Labs Limited.
+    </Text>
+
+    <View style={styles.bottomRule} />
+    <Text style={styles.bottomText}>
+      ThreePoint Labs Limited | 77 Avery Hill Road, London SE9 2BJ | Company No. 11734247 | threepoint.io
+    </Text>
+    <PageFooter pageNumber={6} />
   </Page>
 );
 
 // Main Document
 export const JabraProposalPDF = () => (
   <Document
-    title="Jabra Voice AI Research Programme Proposal"
+    title="ThreePoint Labs — Voice AI Research Programme — Commercial Proposal"
     author="ThreePoint Labs"
-    subject="Strategic Partnership Proposal"
-    keywords="Voice AI, Jabra, Research, ThreePoint Labs"
+    subject="Commercial Proposal for Jabra"
+    keywords="Voice AI, Jabra, Research, ThreePoint Labs, Proposal, SOW"
   >
     <CoverPage />
-    <MarketMomentPage />
-    <TheGapPage />
-    <DeliversPage />
-    <ProgrammePage />
-    <PanelPage />
+    <ExecutiveSummaryPage />
+    <ProgrammeScopePage />
+    <ExpertPanelPage />
     <InvestmentPage />
     <AboutPage />
   </Document>
