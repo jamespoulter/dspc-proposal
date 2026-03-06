@@ -3,21 +3,25 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Navigation from "@/components/Navigation";
 import Section1Welcome from "@/components/Section1Welcome";
 import Section2MarketMoment from "@/components/Section2MarketMoment";
 import Section3TheGap from "@/components/Section3TheGap";
 import Section4WhatDelivers from "@/components/Section4WhatDelivers";
 import Section5Programme from "@/components/Section5Programme";
+import SectionPanel from "@/components/SectionPanel";
 import Section6PricingTiers from "@/components/Section6PricingTiers";
 import Section7NextSteps from "@/components/Section7NextSteps";
 
 const sections = [
   { id: "welcome", label: "Welcome" },
   { id: "market", label: "Market" },
-  { id: "gap", label: "Gap" },
+  { id: "gap", label: "The Gap" },
   { id: "delivers", label: "Delivers" },
   { id: "programme", label: "Programme" },
-  { id: "pricing", label: "Pricing" },
+  { id: "panel", label: "Panel" },
+  { id: "pricing", label: "Tiers" },
   { id: "next", label: "Next Steps" },
 ];
 
@@ -79,8 +83,11 @@ export default function ProposalPage() {
 
   return (
     <main className="relative bg-navy">
-      {/* Navigation dots */}
-      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4">
+      {/* Top Navigation */}
+      <Navigation activeSection={activeSection} />
+
+      {/* Side Navigation dots */}
+      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-3">
         {sections.map((section) => (
           <a
             key={section.id}
@@ -127,20 +134,39 @@ export default function ProposalPage() {
         <Section5Programme />
       </div>
 
-      {/* Section 6: Choose Your Level */}
+      {/* Section 6: The Panel */}
+      <div id="panel">
+        <SectionPanel />
+      </div>
+
+      {/* Section 7: Choose Your Level */}
       <div id="pricing">
         <Section6PricingTiers />
       </div>
 
-      {/* Section 7: Next Steps */}
+      {/* Section 8: Next Steps */}
       <div id="next">
         <Section7NextSteps />
       </div>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-cream/30 text-sm border-t border-cream/10">
-        <p>Confidential proposal prepared for Jabra / GN Audio</p>
-        <p className="mt-2">&copy; {new Date().getFullYear()} ThreePoint Labs. All rights reserved.</p>
+      <footer className="py-12 border-t border-cream/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/threepoint-logo-transparent.png"
+                alt="ThreePoint Labs"
+                width={120}
+                height={35}
+                className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-cream/30 text-sm">|</span>
+              <span className="text-cream/40 text-sm">Confidential proposal prepared for Jabra / GN Audio</span>
+            </div>
+            <p className="text-cream/30 text-sm">&copy; {new Date().getFullYear()} ThreePoint Labs. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </main>
   );

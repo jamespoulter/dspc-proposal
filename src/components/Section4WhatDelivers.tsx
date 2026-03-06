@@ -75,7 +75,7 @@ export default function Section4WhatDelivers() {
         <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
           What This Delivers
         </h2>
-        <p className="text-xl text-cream/60 font-light max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-16">
           Five strategic pillars that translate research into measurable business impact.
         </p>
 

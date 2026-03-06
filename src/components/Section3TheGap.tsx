@@ -40,7 +40,7 @@ export default function Section3TheGap() {
         <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
           The Gap
         </h2>
-        <p className="text-xl text-cream/60 font-light max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-16">
           The distance between where Jabra is today and where this programme takes you.
         </p>
 

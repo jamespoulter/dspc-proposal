@@ -38,32 +38,39 @@ function AnimatedCounter({ value, suffix = "", prefix = "" }: { value: number; s
 
 const stats = [
   {
-    value: 4.2,
+    value: 4.16,
     suffix: "B",
     prefix: "$",
-    label: "Voice AI Market Today",
-    subtext: "2024 global market size",
+    label: "Voice AI Market 2025",
+    subtext: "Current global market size",
   },
   {
-    value: 28,
+    value: 20.71,
     suffix: "B",
     prefix: "$",
-    label: "Projected by 2030",
-    subtext: "6.6x growth trajectory",
-  },
-  {
-    value: 67,
-    suffix: "%",
-    prefix: "",
-    label: "Enterprise Leaders",
-    subtext: "Prioritising voice interfaces",
+    label: "Projected by 2031",
+    subtext: "30.7% CAGR — MarketsandMarkets",
   },
   {
     value: 60,
     suffix: "%",
     prefix: "~",
     label: "Jabra Market Share",
-    subtext: "Pro speakerphone dominance",
+    subtext: "Global professional speakerphone",
+  },
+  {
+    value: 68,
+    suffix: "%",
+    prefix: "",
+    label: "Large Enterprise Share",
+    subtext: "Of conversational AI market",
+  },
+  {
+    value: 30,
+    suffix: "B",
+    prefix: "$10-",
+    label: "Enterprise Voice AI Spend",
+    subtext: "Projected in 2025",
   },
 ];
 
@@ -88,12 +95,12 @@ export default function Section2MarketMoment() {
         <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
           The Market Moment
         </h2>
-        <p className="text-xl text-cream/60 font-light max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-16">
           Voice AI is reshaping enterprise communications. The question isn&apos;t whether
           the market will transform — it&apos;s who will lead that transformation.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -102,7 +109,7 @@ export default function Section2MarketMoment() {
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               className="bg-navy p-8 rounded-2xl border border-cream/10 hover:border-orange/30 transition-colors group"
             >
-              <div className="text-5xl md:text-6xl font-bold text-orange mb-4 group-hover:text-lime transition-colors">
+              <div className="text-4xl md:text-5xl xl:text-6xl font-bold text-orange mb-4 group-hover:text-lime transition-colors">
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -121,7 +128,7 @@ export default function Section2MarketMoment() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-cream/40 text-sm mt-12 max-w-2xl mx-auto"
         >
-          Source: Industry analysis, enterprise communications research 2024
+          Source: MarketsandMarkets Voice AI Research 2025
         </motion.p>
       </motion.div>
 

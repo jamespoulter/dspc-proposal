@@ -73,7 +73,7 @@ export default function Section5Programme() {
         <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
           The Programme
         </h2>
-        <p className="text-xl text-cream/60 font-light max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-16">
           Three strategic phases designed to build insight, influence, and market leadership.
         </p>
 
@@ -170,6 +170,54 @@ export default function Section5Programme() {
             </ul>
           </motion.div>
         </AnimatePresence>
+
+        {/* Research Partners */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold text-cream mb-8">Research Partners</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Delineate */}
+            <div className="bg-navy-light rounded-2xl p-6 border border-lime/20 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-lime/20 flex items-center justify-center">
+                  <span className="text-lg font-bold text-lime">D</span>
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-lime">Delineate</h4>
+                  <p className="text-cream/50 text-sm">Primary quantitative research partner</p>
+                </div>
+              </div>
+              <p className="text-cream/70 text-sm leading-relaxed">
+                Conducts quarterly tracker study across 5 global markets. Specialist in enterprise
+                technology research. Provides statistically robust data underpinning all programme reports.
+              </p>
+            </div>
+
+            {/* ThreePoint Labs */}
+            <div className="bg-navy-light rounded-2xl p-6 border border-orange/20 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-orange/20 flex items-center justify-center">
+                  <span className="text-lg font-bold text-orange">TP</span>
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-orange">ThreePoint Labs</h4>
+                  <p className="text-cream/50 text-sm">Programme Director</p>
+                </div>
+              </div>
+              <p className="text-cream/70 text-sm leading-relaxed mb-3">
+                James Poulter (jp@threepoint.io) leads the programme. AI transformation consultancy
+                with deep enterprise AI expertise.
+              </p>
+              <p className="text-cream/50 text-xs">
+                Trusted by Amazon, Verizon, Bosch, Bloomsbury, Universal Music, LEGO.
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

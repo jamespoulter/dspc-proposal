@@ -13,11 +13,11 @@ const tiers = [
     color: "cream",
     recommended: false,
     deliverables: [
-      "Expert Panel — 5 global Voice AI experts",
-      "Baseline Research Report",
-      "Executive Interview Programme",
-      "3 Monthly Advisory Sessions",
-      "Programme Kick-off Workshop",
+      "Expert panel assembly (5 global experts)",
+      "Baseline landscape report",
+      "3× executive interviews",
+      "Quarterly newsletter",
+      "Access to panel insights",
     ],
   },
   {
@@ -29,12 +29,12 @@ const tiers = [
     color: "cream",
     recommended: false,
     deliverables: [
-      "Everything in Bronze, plus:",
-      "Quarterly Tracker Study (5 markets)",
-      "Copenhagen Executive Workshop",
-      "Interim & Final Reports",
-      "Monthly Advisory Sessions",
-      "Expert Panel Deep-dives",
+      "All Bronze benefits, plus:",
+      "Copenhagen workshop (May 2026)",
+      "Quarterly tracker study (2 markets)",
+      "Interim report (6 months)",
+      "2× panel sessions",
+      "Strategic advisory calls (monthly)",
     ],
   },
   {
@@ -46,13 +46,13 @@ const tiers = [
     color: "gold",
     recommended: true,
     deliverables: [
-      "Everything in Silver, plus:",
-      "Annual Major Study Publication",
-      "New York Executive Summit",
-      "3 Quarterly Update Reports",
-      "Unlimited Advisory Access",
-      "Media & Analyst Briefing Support",
-      "Custom Research Add-ons",
+      "All Silver benefits, plus:",
+      "Quarterly tracker study (5 markets via Delineate)",
+      "New York follow-up summit (Nov 2026)",
+      "Annual major study publication",
+      "3× update reports",
+      "Ongoing advisory panel access",
+      "Exclusive research access",
     ],
   },
 ];
@@ -79,7 +79,7 @@ export default function Section6PricingTiers() {
         <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
           Choose Your Level
         </h2>
-        <p className="text-xl text-cream/60 font-light max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-16">
           Three tiers designed to match your strategic ambitions and budget.
         </p>
 
@@ -171,11 +171,30 @@ export default function Section6PricingTiers() {
           })}
         </div>
 
+        {/* Forward CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.7 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="#next"
+            className="inline-flex items-center gap-2 bg-orange hover:bg-orange/90 text-navy font-bold px-8 py-4 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange/50 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-light"
+          >
+            Discuss this programme
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <span className="text-cream/40 text-sm">or scroll to see next steps</span>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
-          className="text-cream/40 text-sm mt-12"
+          transition={{ delay: 0.8 }}
+          className="text-cream/40 text-sm mt-8"
         >
           All prices exclude VAT. Custom packages available on request.
         </motion.p>

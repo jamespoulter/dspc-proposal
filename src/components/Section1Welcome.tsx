@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Section1Welcome() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6">
+    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 pt-24 md:pt-20">
       {/* Geometric accent shapes */}
       <div className="absolute top-20 right-20 w-72 h-72 border border-orange/20 rounded-full animate-pulse" />
       <div className="absolute bottom-32 left-16 w-48 h-48 border border-lime/20 rotate-45" />
@@ -30,7 +30,7 @@ export default function Section1Welcome() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-cream mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-cream mb-6"
         >
           Voice AI
           <motion.span
@@ -47,7 +47,7 @@ export default function Section1Welcome() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-xl md:text-2xl text-cream/60 font-light mb-12"
+          className="text-xl md:text-2xl text-cream/75 font-normal mb-12"
         >
           A strategic research initiative to position Jabra
           <br className="hidden md:block" /> as the authority on Voice AI in the workplace

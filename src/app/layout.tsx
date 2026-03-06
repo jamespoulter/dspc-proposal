@@ -12,6 +12,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Jabra Voice AI Research Programme | ThreePoint",
   description: "A strategic research programme positioning Jabra as the authority on Voice AI in the workplace",
+  icons: {
+    icon: "/threepoint-icon.png",
+    shortcut: "/threepoint-icon.png",
+    apple: "/threepoint-icon.png",
+  },
 };
 
 export default function RootLayout({
