@@ -480,9 +480,9 @@ const InvestmentPage = () => (
       </View>
       <View style={styles.tableRow}>
         <Text style={[styles.tableCellBold, { width: "25%" }]}>Investment</Text>
-        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>£95,000</Text>
-        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>£215,000</Text>
-        <Text style={[styles.tableCellBold, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>£419,500</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>From £87,000</Text>
+        <Text style={[styles.tableCell, { width: "25%", textAlign: "center" }]}>From £200,000</Text>
+        <Text style={[styles.tableCellBold, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>From £335,000</Text>
       </View>
       <View style={styles.tableRowAlt}>
         <Text style={[styles.tableCellBold, { width: "25%" }]}>Duration</Text>
@@ -503,44 +503,97 @@ const InvestmentPage = () => (
         <Text style={[styles.tableCell, { width: "25%", textAlign: "center", backgroundColor: colors.goldHighlight }]}>Full market leadership play</Text>
       </View>
     </View>
+    <Text style={[styles.caption, { marginTop: 4 }]}>
+      Research partner costs (shown separately) are subject to supplier brief. See Section 4.3.
+    </Text>
 
-    <Text style={styles.subHeading}>4.2 Gold Programme — Investment Breakdown</Text>
+    <Text style={styles.subHeading}>4.2 Programme Fee Breakdown</Text>
+    <Text style={[styles.caption, { marginBottom: 4, marginTop: 0 }]}>Core Programme Fees (Fixed)</Text>
     <View style={styles.table}>
       <View style={styles.tableHeader}>
-        <Text style={[styles.tableHeaderCell, { width: "70%" }]}>Item</Text>
-        <Text style={[styles.tableHeaderCell, { width: "30%", textAlign: "right" }]}>Value</Text>
+        <Text style={[styles.tableHeaderCell, { width: "40%" }]}>Item</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Bronze</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Silver</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Gold</Text>
       </View>
       <View style={styles.tableRow}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Professional Fees (James Poulter + ThreePoint team)</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£246,000</Text>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Programme Management & Direction</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£48,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£108,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£168,000</Text>
       </View>
       <View style={styles.tableRowAlt}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Panel Honoraria (5 experts × 12 months)</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£60,000</Text>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Panel Coordination</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£10,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£20,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£30,000</Text>
       </View>
       <View style={styles.tableRow}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Research Partner: Delineate</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£30,000–80,000</Text>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Event Production</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>—</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£18,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£42,000</Text>
       </View>
       <View style={styles.tableRowAlt}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Event Production: Copenhagen Workshop</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£18,000</Text>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Research, Reporting & Content</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£14,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£24,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£28,000</Text>
       </View>
       <View style={styles.tableRow}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Event Production: New York Summit</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£24,000</Text>
-      </View>
-      <View style={styles.tableRowAlt}>
-        <Text style={[styles.tableCell, { width: "70%" }]}>Content & Media Programme</Text>
-        <Text style={[styles.tableCell, { width: "30%", textAlign: "right" }]}>£15,500</Text>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Jabra Voice AI Index</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>—</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>—</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£12,000</Text>
       </View>
       <View style={[styles.tableRow, { backgroundColor: colors.lightGrey }]}>
-        <Text style={[styles.tableCellBold, { width: "70%" }]}>Total Investment</Text>
-        <Text style={[styles.tableCellBold, { width: "30%", textAlign: "right" }]}>£419,500</Text>
+        <Text style={[styles.tableCellBold, { width: "40%" }]}>Core Fee Total</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£72,000</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£170,000</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£280,000</Text>
       </View>
     </View>
 
-    <Text style={styles.subHeading}>4.3 Payment Terms</Text>
+    <Text style={[styles.caption, { marginBottom: 4, marginTop: 8 }]}>Research Partner Costs (Estimated Range)</Text>
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        <Text style={[styles.tableHeaderCell, { width: "40%" }]}>Scope</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Bronze</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Silver</Text>
+        <Text style={[styles.tableHeaderCell, { width: "20%", textAlign: "center" }]}>Gold</Text>
+      </View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Markets covered</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>1</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>2</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>5</Text>
+      </View>
+      <View style={styles.tableRowAlt}>
+        <Text style={[styles.tableCell, { width: "40%" }]}>Estimated range</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£15,000–£28,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£30,000–£48,000</Text>
+        <Text style={[styles.tableCell, { width: "20%", textAlign: "center" }]}>£55,000–£80,000</Text>
+      </View>
+      <View style={[styles.tableRow, { backgroundColor: colors.lightGrey }]}>
+        <Text style={[styles.tableCellBold, { width: "40%" }]}>Total Investment Range</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£87,000–£100,000</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£200,000–£218,000</Text>
+        <Text style={[styles.tableCellBold, { width: "20%", textAlign: "center" }]}>£335,000–£360,000</Text>
+      </View>
+    </View>
+
+    <Text style={styles.subHeading}>4.3 Research Partner</Text>
+    <Text style={styles.body}>
+      ThreePoint will work with Delineate as our preferred research partner for quantitative survey design, fieldwork, and data analysis. Delineate specialises in enterprise technology research across global markets and has experience with similar voice AI and workplace technology studies.
+    </Text>
+    <Text style={styles.body}>
+      Prior to programme commencement, ThreePoint will conduct a structured brief with two to three preferred research suppliers — including Delineate — to confirm final costs, methodology, and deliverable scope. This process ensures Jabra receives competitive pricing and best-in-class research quality. The estimated ranges above represent ThreePoint's current expectation based on comparable programmes.
+    </Text>
+    <Text style={styles.body}>
+      Research partner costs will be invoiced directly to ThreePoint and included in the programme fee structure; Jabra will not be required to manage a separate supplier relationship.
+    </Text>
+
+    <Text style={styles.subHeading}>4.4 Payment Terms</Text>
     <Text style={styles.body}>
       Invoiced in quarterly instalments. 50% deposit on contract execution. Remaining 50% across three equal quarterly payments. All invoices payable within 30 days. Prices quoted in GBP and exclude VAT.
     </Text>

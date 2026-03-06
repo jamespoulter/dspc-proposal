@@ -8,51 +8,62 @@ const tiers = [
     id: "bronze",
     name: "Bronze",
     subtitle: "Foundation",
-    price: "£95,000",
+    corePrice: "£72,000",
+    researchRange: "£15,000–£28,000",
+    totalRange: "£87,000–£100,000",
+    price: "From £87,000",
     duration: "3 months",
     color: "cream",
     recommended: false,
     deliverables: [
-      "Expert panel assembly (5 global experts)",
+      "Programme Management & Direction",
+      "Panel Coordination — 2 expert sessions",
       "Baseline landscape report",
       "3× executive interviews",
-      "Quarterly newsletter",
-      "Access to panel insights",
+      "Research, reporting & content",
+      "Research partner cost (1 market)*",
     ],
   },
   {
     id: "silver",
     name: "Silver",
     subtitle: "Growth",
-    price: "£215,000",
+    corePrice: "£170,000",
+    researchRange: "£30,000–£48,000",
+    totalRange: "£200,000–£218,000",
+    price: "From £200,000",
     duration: "12 months",
     color: "cream",
     recommended: false,
     deliverables: [
       "All Bronze benefits, plus:",
-      "Copenhagen workshop (May 2026)",
+      "Panel Coordination — 4 expert sessions",
+      "Copenhagen Workshop (May 2026)",
       "Quarterly tracker study (2 markets)",
-      "Interim report (6 months)",
-      "2× panel sessions",
+      "Interim + annual research reports",
       "Strategic advisory calls (monthly)",
+      "Research partner cost (2 markets)*",
     ],
   },
   {
     id: "gold",
     name: "Gold",
     subtitle: "Full Programme",
-    price: "£419,500",
+    corePrice: "£280,000",
+    researchRange: "£55,000–£80,000",
+    totalRange: "£335,000–£360,000",
+    price: "From £335,000",
     duration: "12 months",
     color: "gold",
     recommended: true,
     deliverables: [
       "All Silver benefits, plus:",
-      "Quarterly tracker study (5 markets via Delineate)",
-      "New York follow-up summit (Nov 2026)",
-      "Annual major study publication",
-      "3× update reports",
-      "Ongoing advisory panel access",
-      "Exclusive research access",
+      "Panel Coordination — 6 expert sessions",
+      "New York Summit (Nov 2026)",
+      "Jabra Voice AI Index development",
+      "3× quarterly update reports",
+      "Media amplification & executive briefings",
+      "Research partner cost (5 markets)*",
     ],
   },
 ];
@@ -123,11 +134,21 @@ export default function Section6PricingTiers() {
                   <p className="text-cream/60 text-sm">{tier.subtitle}</p>
                 </div>
 
-                <div className="mb-6">
-                  <div className={`text-4xl font-bold ${isGold && isSelected ? "text-gold" : "text-orange"}`}>
-                    {tier.price}
+                {/* Core fee + research split */}
+                <div className="mb-4">
+                  <div className="text-xs text-cream/50 uppercase tracking-widest mb-1">Core Programme Fee</div>
+                  <div className={`text-3xl font-bold ${isGold && isSelected ? "text-gold" : "text-orange"}`}>
+                    {tier.corePrice}
                   </div>
-                  <div className="text-cream/60 text-sm">{tier.duration}</div>
+                  <div className="text-cream/50 text-xs mt-1">{tier.duration}</div>
+                  <div className="mt-3 pt-3 border-t border-cream/10">
+                    <div className="text-xs text-cream/50 uppercase tracking-widest mb-1">+ Research Partner Est.</div>
+                    <div className="text-cream/70 text-sm font-medium">{tier.researchRange}</div>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-cream/10">
+                    <div className="text-xs text-cream/50 uppercase tracking-widest mb-1">Total Investment Range</div>
+                    <div className={`text-lg font-bold ${isGold && isSelected ? "text-gold" : "text-cream"}`}>{tier.totalRange}</div>
+                  </div>
                 </div>
 
                 {/* Deliverables always visible */}
@@ -165,6 +186,10 @@ export default function Section6PricingTiers() {
           })}
         </div>
 
+        <p className="text-cream/50 text-xs text-center mt-6 max-w-2xl mx-auto">
+          * Research partner costs are estimated ranges. ThreePoint will conduct a structured brief with preferred suppliers — including Delineate as our recommended partner — to confirm final costs and scope prior to programme commencement. All prices exclude VAT.
+        </p>
+
         {/* Comparison Table */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -185,6 +210,24 @@ export default function Section6PricingTiers() {
               </thead>
               <tbody>
                 <tr>
+                  <td className="text-cream/80 text-sm p-4 border-b border-cream/10">Investment</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">From £87,000</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">From £200,000</td>
+                  <td className="text-cream text-sm p-4 border-b border-cream/10 text-center bg-orange/5 font-medium">From £335,000</td>
+                </tr>
+                <tr>
+                  <td className="text-cream/80 text-sm p-4 border-b border-cream/10">Core Fee</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">£72,000</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">£170,000</td>
+                  <td className="text-cream text-sm p-4 border-b border-cream/10 text-center bg-orange/5 font-medium">£280,000</td>
+                </tr>
+                <tr>
+                  <td className="text-cream/80 text-sm p-4 border-b border-cream/10">Research Partner</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">£15k–£28k</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">£30k–£48k</td>
+                  <td className="text-cream text-sm p-4 border-b border-cream/10 text-center bg-orange/5 font-medium">£55k–£80k</td>
+                </tr>
+                <tr>
                   <td className="text-cream/80 text-sm p-4 border-b border-cream/10">Duration</td>
                   <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">3 months</td>
                   <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">12 months</td>
@@ -192,7 +235,7 @@ export default function Section6PricingTiers() {
                 </tr>
                 <tr>
                   <td className="text-cream/80 text-sm p-4 border-b border-cream/10">Markets</td>
-                  <td className="text-cream/40 text-sm p-4 border-b border-cream/10 text-center">—</td>
+                  <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">1 market</td>
                   <td className="text-cream/60 text-sm p-4 border-b border-cream/10 text-center">2 markets</td>
                   <td className="text-cream text-sm p-4 border-b border-cream/10 text-center bg-orange/5 font-medium">5 markets</td>
                 </tr>
