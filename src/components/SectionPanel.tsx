@@ -9,6 +9,18 @@ import Image from "next/image";
  */
 const panelists = [
   {
+    name: "James Poulter",
+    region: "UK",
+    regionColor: "orange",
+    title: "Programme Convener & Chair",
+    company: "Founder & CEO, ThreePoint Labs",
+    bio: "James is one of the world's most sought-after voices on AI strategy and enterprise transformation. Formerly Head of Emerging Platforms at The LEGO Group (launched LEGO Life to 2m+ users) and CEO of Vixen Labs — the UK's pioneering voice AI studio, exited to House 337 in 2023. Author of AI @ Work (Bloomsbury, 2026). Currently Fractional Head of AI at Elvis London and Dunham & Company. As Convener, James chairs all panel sessions, shapes the research agenda, and leads the Copenhagen and New York workshops.",
+    shortBio: "AI strategist, author, and former CEO of Vixen Labs — the UK's pioneering voice AI studio. Convener & Chair of this programme.",
+    photo: "/threepoint-icon.png",
+    color: "orange",
+    isConvener: true,
+  },
+  {
     name: "Romina Pankoke",
     region: "Europe",
     regionColor: "indigo",
@@ -101,16 +113,18 @@ export default function SectionPanel() {
           The Panel
         </h2>
         <p className="text-lg sm:text-xl text-cream/75 font-normal max-w-3xl mx-auto mb-12 sm:mb-16">
-          Five globally recognised Voice AI experts bringing deep industry experience,
-          research credibility, and strategic insight to the programme.
+          Led by James Poulter as Convener &amp; Chair, and supported by five globally recognised
+          Voice AI experts — bringing deep industry experience, research credibility, and
+          strategic insight to the programme.
         </p>
 
-        {/* 5-column grid on desktop, 2-col tablet, 1-col mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+        {/* 6-column grid: JP first (full-width or featured), then 5 panelists */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-5">
           {panelists.map((panelist, index) => {
             const colors = colorClasses[panelist.color];
-            const regionStyle = regionColors[panelist.regionColor];
+            const regionStyle = regionColors[panelist.regionColor] || { bg: "bg-orange/20", text: "text-orange" };
             const isExpanded = expandedCard === panelist.name;
+            const isConvener = (panelist as { isConvener?: boolean }).isConvener;
 
             return (
               <motion.div
@@ -119,11 +133,21 @@ export default function SectionPanel() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
                 onClick={() => setExpandedCard(isExpanded ? null : panelist.name)}
-                className={`relative bg-navy-light rounded-2xl p-4 sm:p-5 border border-cream/10
-                  hover:border-cream/20 transition-all duration-300 cursor-pointer
-                  hover:-translate-y-1 hover:shadow-lg hover:shadow-black/20
+                className={`relative bg-navy-light rounded-2xl p-4 sm:p-5 border transition-all duration-300 cursor-pointer
+                  hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20
+                  ${isConvener
+                    ? "border-orange/40 hover:border-orange/60 ring-1 ring-orange/20 lg:col-span-2"
+                    : "border-cream/10 hover:border-cream/20"}
                   ${isExpanded ? "ring-2 ring-orange/50" : ""}`}
               >
+                {/* Convener badge */}
+                {isConvener && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="bg-orange text-navy text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                      Programme Convener &amp; Chair
+                    </span>
+                  </div>
+                )}
                 {/* Region badge */}
                 <div className="absolute top-3 right-3">
                   <span className={`text-xs font-medium px-2 py-1 rounded-full ${regionStyle.bg} ${regionStyle.text}`}>

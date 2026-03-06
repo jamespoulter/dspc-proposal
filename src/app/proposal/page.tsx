@@ -12,6 +12,7 @@ import Section4WhatDelivers from "@/components/Section4WhatDelivers";
 import Section5Programme from "@/components/Section5Programme";
 import SectionPanel from "@/components/SectionPanel";
 import Section6PricingTiers from "@/components/Section6PricingTiers";
+import SectionAboutThreePoint from "@/components/SectionAboutThreePoint";
 import Section7NextSteps from "@/components/Section7NextSteps";
 
 const sections = [
@@ -20,6 +21,7 @@ const sections = [
   { id: "gap", label: "The Gap" },
   { id: "delivers", label: "Delivers" },
   { id: "programme", label: "Programme" },
+  { id: "about", label: "ThreePoint" },
   { id: "panel", label: "Panel" },
   { id: "pricing", label: "Tiers" },
   { id: "next", label: "Next Steps" },
@@ -134,7 +136,12 @@ export default function ProposalPage() {
         <Section5Programme />
       </div>
 
-      {/* Section 6: The Panel */}
+      {/* Section 6: About ThreePoint */}
+      <div id="about">
+        <SectionAboutThreePoint />
+      </div>
+
+      {/* Section 7: The Panel */}
       <div id="panel">
         <SectionPanel />
       </div>
