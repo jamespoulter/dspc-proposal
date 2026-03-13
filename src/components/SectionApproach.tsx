@@ -6,49 +6,50 @@ import { useRef } from "react";
 const phases = [
   {
     number: "01",
-    phase: "Awakening",
-    title: "Discover & Diagnose",
-    duration: "Weeks 1–4",
+    label: "Targeting: Early April 2026 (E03.26)",
+    title: "Foundation & MVP",
     color: "orange",
-    steps: [
-      "Deep-dive discovery sessions with Bosch leadership",
-      "AI maturity audit across business units",
-      "Competitive landscape and benchmarking analysis",
-      "Stakeholder interviews and employee sentiment mapping",
-      "Current-state AI inventory and governance review",
+    items: [
+      "Discovery: Review all source documents (Bain decks, process maps, deep-dives)",
+      "Content architecture: Structure the full playbook into logical, navigable modules",
+      "Microsite build: Branded platform shell, navigation, PDF library, prompt examples",
+      "General Playbook: AI strategy overview, E2E reimagination methodology, key frameworks",
+      "G7-ready: polished, secure, and accessible for executive review",
     ],
-    outcome: "A clear picture of where Bosch stands, where the gaps are, and where the greatest opportunities lie.",
   },
   {
     number: "02",
-    phase: "Wrestling",
-    title: "Design & Build",
-    duration: "Weeks 5–12",
+    label: "Targeting: Q2 2026 (rolling)",
+    title: "Domain Modules",
     color: "gold",
-    steps: [
-      "Co-creation of the Bosch AI Playbook with key stakeholders",
-      "AI ethics policy and governance framework development",
-      "Role-based training programme design and delivery",
-      "Workflow transformation labs with selected business units",
-      "Pilot AI use case identification and feasibility assessment",
+    items: [
+      "Three standalone domain chapters: Manufacturing (Ansbach), Sales (RFQ), Logistics (Homburg)",
+      "Each module: process maps, case studies, team exercises, workshop outlines, implementation guides",
+      "Audio versions of all long-form content",
+      "Internal comms toolkit: email templates, team briefing guides, adoption resources",
     ],
-    outcome: "A living AI Playbook, trained teams, and 2–3 validated AI pilots ready for scale.",
   },
   {
     number: "03",
-    phase: "Transformation",
-    title: "Embed & Scale",
-    duration: "Weeks 13–20",
+    label: "Targeting: Q2–Q3 2026",
+    title: "Interactive Layer",
     color: "orange",
-    steps: [
-      "Playbook rollout across the wider organisation",
-      "AI Champions programme — internal advocates and enablers",
-      "ROI measurement framework implementation",
-      "Ongoing coaching and advisory for AI leadership team",
-      "Innovation sprint to surface next-horizon opportunities",
+    items: [
+      "RAG AI chatbot: trained on all playbook content, tested with Bosch use cases",
+      "Video explainers: scripted and produced for each major module",
+      "Advanced prompt library: expanded, tested, categorised by function and use case",
+      "Full GitHub handover (if selected) or ongoing hosting + update management",
+      "Modular update workflow: process for adding new chapters as Bosch's AI programme grows",
     ],
-    outcome: "AI is no longer an experiment — it's embedded in how Bosch operates, competes, and grows.",
   },
+];
+
+const timeline = [
+  { date: "March", label: "Discovery + Architecture" },
+  { date: "April", label: "MVP Live — G7 ready", highlight: true },
+  { date: "May–June", label: "Domain Modules" },
+  { date: "July–Sept", label: "Interactive Layer" },
+  { date: "Ongoing", label: "Modular updates" },
 ];
 
 export default function SectionApproach() {
@@ -60,8 +61,6 @@ export default function SectionApproach() {
       ref={containerRef}
       className="min-h-screen flex flex-col items-center justify-center relative px-6 py-24 bg-navy-light overflow-hidden"
     >
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-orange/[0.03] rounded-full blur-3xl pointer-events-none" />
-
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -70,101 +69,72 @@ export default function SectionApproach() {
       >
         <div className="text-center mb-16">
           <span className="text-orange text-sm font-medium tracking-widest uppercase mb-4 block">
-            How We Work
+            Our Approach
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Our Approach
+            Tiered. Modular.
+            <span className="block text-orange">Built for how you actually work.</span>
           </h2>
           <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            ThreePoint&apos;s three-phase methodology mirrors the natural journey every organisation
-            takes with AI — from awakening to wrestling to transformation. We meet you where you are
-            and guide you to where you need to be.
+            We work in three phases — each one delivering standalone value, each one building on the last.
+            The MVP is live for your G7 meeting. The full platform grows through Q2 and Q3.
           </p>
         </div>
 
-        {/* Timeline phases */}
-        <div className="space-y-6">
+        {/* Phase cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {phases.map((phase, index) => {
             const isOrange = phase.color === "orange";
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 + index * 0.15 }}
-                className={`bg-navy rounded-2xl border-l-4 ${isOrange ? "border-orange" : "border-gold"} overflow-hidden`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
+                className="bg-navy border border-cream/10 rounded-2xl p-8"
               >
-                <div className="p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-                    {/* Phase header */}
-                    <div className="md:w-48 flex-shrink-0">
-                      <div className={`text-6xl font-bold ${isOrange ? "text-orange/20" : "text-gold/20"} leading-none mb-2`}>
-                        {phase.number}
-                      </div>
-                      <div className={`text-sm font-bold uppercase tracking-widest ${isOrange ? "text-orange" : "text-gold"} mb-1`}>
-                        {phase.phase}
-                      </div>
-                      <div className="text-cream font-bold text-lg mb-1">{phase.title}</div>
-                      <div className="text-cream/50 text-sm">{phase.duration}</div>
-                    </div>
-
-                    {/* Divider */}
-                    <div className={`hidden md:block w-px ${isOrange ? "bg-orange/20" : "bg-gold/20"}`} />
-
-                    {/* Steps */}
-                    <div className="flex-1">
-                      <ul className="space-y-2 mb-4">
-                        {phase.steps.map((step, i) => (
-                          <motion.li
-                            key={i}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: 0.2 + index * 0.15 + i * 0.04 }}
-                            className="flex items-start gap-2 text-sm text-cream/80"
-                          >
-                            <svg
-                              className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isOrange ? "text-orange" : "text-gold"}`}
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            {step}
-                          </motion.li>
-                        ))}
-                      </ul>
-                      <div className={`text-sm font-medium ${isOrange ? "text-orange" : "text-gold"} italic`}>
-                        → {phase.outcome}
-                      </div>
-                    </div>
-                  </div>
+                <div className={`text-6xl font-bold mb-2 ${isOrange ? "text-orange/20" : "text-gold/20"}`}>
+                  {phase.number}
                 </div>
+                <p className={`text-xs font-medium tracking-wide mb-3 ${isOrange ? "text-orange" : "text-gold"}`}>
+                  {phase.label}
+                </p>
+                <h3 className="text-cream font-bold text-xl mb-5">{phase.title}</h3>
+                <ul className="space-y-3">
+                  {phase.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${isOrange ? "bg-orange" : "bg-gold"}`} />
+                      <span className="text-cream/65 text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Timeline summary */}
+        {/* Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-8 text-center"
+          className="bg-navy border border-cream/10 rounded-2xl p-8"
         >
-          <div>
-            <div className="text-3xl font-bold text-orange">20 weeks</div>
-            <div className="text-cream/60 text-sm">Full programme duration</div>
-          </div>
-          <div className="hidden sm:block w-px h-12 bg-cream/20" />
-          <div>
-            <div className="text-3xl font-bold text-gold">Bespoke</div>
-            <div className="text-cream/60 text-sm">Adapted to Bosch's pace and context</div>
-          </div>
-          <div className="hidden sm:block w-px h-12 bg-cream/20" />
-          <div>
-            <div className="text-3xl font-bold text-orange">Embedded</div>
-            <div className="text-cream/60 text-sm">Capability stays inside Bosch, not in a consultant's deck</div>
+          <p className="text-gold text-sm font-medium tracking-widest uppercase mb-6 text-center">Timeline</p>
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-cream/10 z-0" />
+            {timeline.map((item, index) => (
+              <div key={index} className="flex flex-col items-center text-center z-10 flex-1">
+                <div className={`w-3 h-3 rounded-full mb-3 ${item.highlight ? "bg-orange ring-4 ring-orange/20" : "bg-cream/30"}`} />
+                <p className={`text-sm font-semibold mb-1 ${item.highlight ? "text-orange" : "text-cream/60"}`}>
+                  {item.date}
+                </p>
+                <p className={`text-xs leading-tight ${item.highlight ? "text-cream" : "text-cream/50"}`}>
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </motion.div>

@@ -30,7 +30,7 @@ export default function SectionWelcome() {
           transition={{ delay: 0.3 }}
           className="inline-block text-gold text-sm font-medium tracking-widest uppercase mb-6"
         >
-          Confidential Proposal
+          Confidential Proposal — ThreePoint × Bosch
         </motion.span>
 
         <motion.h1
@@ -56,8 +56,8 @@ export default function SectionWelcome() {
           transition={{ delay: 0.8 }}
           className="text-xl md:text-2xl text-cream/80 font-normal mb-12"
         >
-          A transformational AI strategy programme to equip Bosch
-          <br className="hidden md:block" /> with the frameworks, skills, and confidence to lead in the AI era
+          A strategic digital platform to convert your AI pilot outcomes into a living,
+          <br className="hidden md:block" /> accessible resource that every Bosch Group Brand and function can use — from day one.
         </motion.p>
 
         <motion.div
@@ -80,7 +80,7 @@ export default function SectionWelcome() {
             href="#moment"
             className="inline-flex items-center gap-2 bg-orange hover:bg-orange/90 text-navy font-bold px-8 py-4 rounded-xl transition-colors shadow-lg shadow-orange/20"
           >
-            Explore the Proposal
+            Read the Proposal ↓
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>

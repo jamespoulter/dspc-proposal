@@ -2,43 +2,43 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Compass, BarChart3, ShieldCheck, Workflow, GraduationCap, Lightbulb } from "lucide-react";
+import { Globe, Download, Zap, Video, Headphones, Bot } from "lucide-react";
 
 const features = [
   {
-    icon: Compass,
-    title: "AI Strategy Mapping",
-    body: "A bespoke AI roadmap for Bosch — aligned to business priorities, risk appetite, and competitive context. From vision to 90-day execution plan.",
+    icon: Globe,
+    title: "Dynamic Microsite",
+    body: "A fully branded, secure web platform — hosted on ThreePoint infrastructure or handed over as a GitHub project for internal Bosch deployment. Modular architecture allows new chapters to be added throughout 2026 without rebuilding.",
     color: "orange",
   },
   {
-    icon: GraduationCap,
-    title: "Organisation-Wide Training",
-    body: "Modular, role-based AI literacy programmes across all staff levels — from board to frontline. Practical, engaging, and immediately applicable.",
+    icon: Download,
+    title: "Downloadable Resource Library",
+    body: "PDF versions of all core materials — RACI frameworks, process maps, domain guides, workshop outlines — ready to save, print, and use offline.",
     color: "gold",
   },
   {
-    icon: ShieldCheck,
-    title: "AI Ethics & Governance Framework",
-    body: "A clear, actionable policy framework covering responsible AI use, EU AI Act compliance, risk categorisation, and accountability structures.",
+    icon: Zap,
+    title: "AI Prompt Library",
+    body: "Curated, tested example prompts mapped to real Bosch use cases across Manufacturing, Sales, and Logistics. Ready to paste into ChatGPT, Copilot, or your preferred AI tool.",
     color: "orange",
   },
   {
-    icon: Workflow,
-    title: "Workflow Transformation Labs",
-    body: "Hands-on working sessions with business units to redesign workflows using AI — identifying the highest-value automation and augmentation opportunities.",
+    icon: Video,
+    title: "Video Explainers",
+    body: "Short, scripted video summaries of each major module — breaking complex frameworks into 3–5 minute watch-and-apply content. Ideal for teams who learn visually or need a quick refresher.",
     color: "gold",
   },
   {
-    icon: BarChart3,
-    title: "ROI & Impact Measurement",
-    body: "Custom dashboards and KPI frameworks to track AI adoption, measure productivity gains, and build the data story for continued investment.",
+    icon: Headphones,
+    title: "Audio Versions",
+    body: "Narrated audio of longer-form content — for on-the-go consumption during commutes, travel, or time between meetings. No screen required.",
     color: "orange",
   },
   {
-    icon: Lightbulb,
-    title: "AI Innovation Sprints",
-    body: "Facilitated innovation sessions using proven creative methodologies to surface and pilot AI use cases with the highest business impact.",
+    icon: Bot,
+    title: "RAG-Powered AI Assistant",
+    body: "A custom chatbot trained on all playbook content. Ask \"What's the RFQ process redesign approach?\" or \"Show me the Ansbach implementation roadmap\" — and get precise, sourced answers from the playbook itself.",
     color: "gold",
   },
 ];
@@ -62,20 +62,20 @@ export default function SectionPlatform() {
       >
         <div className="text-center mb-16">
           <span className="text-gold text-sm font-medium tracking-widest uppercase mb-4 block">
-            Our Solution
+            The Platform
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            The Platform
+            Not just a document.
+            <span className="block text-orange">A living digital playbook.</span>
           </h2>
           <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            ThreePoint&apos;s AI Playbook Programme is a comprehensive, end-to-end transformation
-            platform — combining strategy, training, governance, and hands-on delivery into
-            one cohesive engagement.
+            We&apos;re proposing a purpose-built digital platform that brings your AI transformation
+            knowledge to life — accessible, modular, and designed for Bosch employees at every level.
           </p>
         </div>
 
-        {/* 6 Feature Cards using Lucide icons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {/* Feature grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isOrange = feature.color === "orange";
@@ -85,47 +85,40 @@ export default function SectionPlatform() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-                className="bg-navy-light border border-cream/10 rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 group cursor-default"
+                className="bg-navy-light border border-cream/10 rounded-2xl p-6 hover:border-orange/30 transition-colors group"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${isOrange ? "bg-orange/15" : "bg-gold/15"} group-hover:scale-110 transition-transform`}>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${isOrange ? "bg-orange/10" : "bg-gold/10"}`}>
                   <Icon className={`w-6 h-6 ${isOrange ? "text-orange" : "text-gold"}`} />
                 </div>
-                <h3 className="text-cream font-bold mb-3 text-lg">{feature.title}</h3>
+                <h3 className="text-cream font-semibold text-lg mb-3">{feature.title}</h3>
                 <p className="text-cream/65 text-sm leading-relaxed">{feature.body}</p>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Platform summary band */}
+        {/* Hosting callout */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="bg-navy-light border border-orange/20 rounded-2xl p-8 md:p-10"
+          className="bg-navy-light border border-cream/10 rounded-2xl p-8 max-w-3xl mx-auto"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <p className="text-gold font-semibold mb-4 text-sm tracking-widest uppercase">Two Deployment Paths</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <div className="text-4xl font-bold text-orange mb-2">3</div>
-              <div className="text-cream/70 text-sm">Transformation Phases</div>
-              <div className="text-cream/50 text-xs mt-1">Awakening → Wrestling → Transformation</div>
+              <h4 className="text-cream font-semibold mb-2">ThreePoint-Hosted</h4>
+              <p className="text-cream/65 text-sm leading-relaxed">We manage the platform, updates, and security. You access it via a Bosch-branded subdomain.</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-gold mb-2">6</div>
-              <div className="text-cream/70 text-sm">Core Capability Areas</div>
-              <div className="text-cream/50 text-xs mt-1">Strategy to measurement, end-to-end</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-orange mb-2">100%</div>
-              <div className="text-cream/70 text-sm">Tailored to Bosch</div>
-              <div className="text-cream/50 text-xs mt-1">No off-the-shelf programmes here</div>
+              <h4 className="text-cream font-semibold mb-2">GitHub Handover</h4>
+              <p className="text-cream/65 text-sm leading-relaxed">Full codebase delivered to your team for internal deployment behind Bosch&apos;s own infrastructure.</p>
             </div>
           </div>
         </motion.div>
       </motion.div>
 
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-orange/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-orange/5 rounded-full blur-3xl pointer-events-none" />
     </section>
   );
 }
