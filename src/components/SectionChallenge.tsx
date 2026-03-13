@@ -6,20 +6,20 @@ import { useRef } from "react";
 const challenges = [
   {
     number: "01",
-    title: "Format",
-    body: "Slide decks are built for boardrooms, not learning. Converting expert content into a format that works for a logistics manager in Homburg or a sales lead in Chicago requires real design and editorial thinking.",
+    title: "The Format Gap",
+    body: "Traditional documents — PDFs, slide decks, printed guides — were designed for a pre-AI world. They don't update, don't respond, and don't meet people where they are. If your organisation is using AI to work, your learning infrastructure needs to match.",
     color: "orange",
   },
   {
     number: "02",
-    title: "Modular Depth",
-    body: "One playbook doesn't fit every function. Manufacturing has different needs to Sales. The platform needs to be tiered and domain-specific — with a shared foundation and specialist chapters that can grow throughout the year.",
+    title: "Depth by Function",
+    body: "A logistics engineer in Ansbach has different needs to a sales lead in Chicago. One playbook, one format, one level of depth doesn't serve either of them well. Real activation requires content that's modular, role-specific, and built to grow.",
     color: "gold",
   },
   {
     number: "03",
-    title: "Activation at Scale",
-    body: "Reading a playbook is one thing. Knowing how to apply it is another. The most effective knowledge transfer combines readable content, worked examples, prompt libraries, and interactive tools — so people can learn by doing, not just by reading.",
+    title: "Activation vs. Consumption",
+    body: "Reading about AI doesn't make anyone better at using it. The most effective learning combines context, worked examples, interactive tools, and real prompts — so people build capability by doing, not just by knowing.",
     color: "orange",
   },
 ];
@@ -46,14 +46,13 @@ export default function SectionChallenge() {
             The Challenge
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Dense consultant outputs.
-            <span className="block text-orange/80">Lean internal bandwidth.</span>
-            <span className="block">Zero time.</span>
+            Your operations run on AI.
+            <span className="block text-orange">Your learning infrastructure doesn&apos;t — yet.</span>
           </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            The Bain decks are thorough. The process maps are detailed. The domain deep-dives are excellent.
-            But Bosch employees — the people who need to apply this thinking — can&apos;t be expected to
-            navigate 200-slide decks while running live operations. Knowledge transfer requires a different format.
+          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto leading-relaxed">
+            Bosch has built something remarkable — a working AI programme with documented outcomes
+            across three domains. The knowledge is there. The gap is in how it gets shared, applied,
+            and built upon. That&apos;s not a knowledge problem. It&apos;s an infrastructure problem.
           </p>
         </div>
 
@@ -81,21 +80,22 @@ export default function SectionChallenge() {
           })}
         </div>
 
-        {/* Bosch quote */}
-        <motion.blockquote
+        {/* Bridge callout */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="border-l-4 border-orange pl-6 max-w-3xl mx-auto"
         >
-          <p className="text-xl text-cream/85 italic leading-relaxed">
-            &ldquo;The goal is to convert comprehensive project outcomes into a more accessible,
-            user-friendly cookbook format that Bosch employees can readily utilise.&rdquo;
+          <p className="text-xl text-cream/85 leading-relaxed">
+            The goal is to convert comprehensive project outcomes into a more accessible,
+            user-friendly format that Bosch employees can readily utilise — and that evolves
+            as your AI programme does.
           </p>
           <footer className="mt-3 text-orange font-medium text-sm tracking-wide">
             — Bosch Project Brief, March 2026
           </footer>
-        </motion.blockquote>
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -6,20 +6,20 @@ import { useRef } from "react";
 const stats = [
   {
     value: "3",
-    label: "domains transformed",
-    sub: "Manufacturing (Ansbach), Sales (RFQ), and Logistics (Homburg) — with documented value and implementation roadmaps.",
+    label: "domains operational",
+    sub: "Manufacturing, Sales, and Logistics — AI is no longer a pilot. It's running. The question now is how the rest of the organisation keeps up.",
     color: "text-orange",
   },
   {
-    value: "E03.26",
-    label: "G7 executive meeting",
-    sub: "The hard, immovable deadline that requires a polished, accessible playbook — not another slide deck.",
+    value: "∞",
+    label: "shelf life of a PDF",
+    sub: "Static documents don't learn, update, or respond. Your AI programme does. Your knowledge platform should too.",
     color: "text-gold",
   },
   {
-    value: "Bain",
-    label: "quality insight",
-    sub: "You have access to world-class consulting outputs. The gap isn't knowledge — it's accessibility, format, and distribution.",
+    value: "3",
+    label: "phases of transformation",
+    sub: "Awakening. Wrestling. Transformation. Bosch has done the first two. The Playbook is how you complete the third.",
     color: "text-orange",
   },
 ];
@@ -49,11 +49,15 @@ export default function SectionMoment() {
             You&apos;ve done the hard part.
             <span className="block text-orange">Now comes the harder part.</span>
           </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            Bosch has already done something most organisations only talk about. You ran a rigorous,
-            value-driven AI transformation across three domains — and you built a repeatable model
-            that works. The challenge now isn&apos;t proving AI&apos;s value. It&apos;s making sure
-            the rest of the organisation can actually use what you&apos;ve learned.
+          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto leading-relaxed">
+            Bosch has already done something most organisations only talk about. AI is running across
+            three domains — and it&apos;s working. The challenge now isn&apos;t proving the value.
+            It&apos;s making sure every part of the organisation can actually use what you&apos;ve built.
+          </p>
+          <p className="text-lg text-cream/60 font-normal max-w-2xl mx-auto mt-4 leading-relaxed">
+            If your people are expected to use AI at work, they should be learning about AI
+            the same way — through a platform that&apos;s as dynamic, interactive, and intelligent
+            as the tools they&apos;re being asked to use.
           </p>
         </div>
 
@@ -67,7 +71,7 @@ export default function SectionMoment() {
               transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
               className="bg-navy-light border border-cream/10 rounded-2xl p-8 text-center"
             >
-              <div className={`text-4xl md:text-5xl font-bold mb-3 ${stat.color}`}>{stat.value}</div>
+              <div className={`text-5xl font-bold mb-3 ${stat.color}`}>{stat.value}</div>
               <div className="text-cream font-semibold mb-3 text-lg">{stat.label}</div>
               <p className="text-cream/65 text-sm leading-relaxed">{stat.sub}</p>
             </motion.div>
@@ -83,8 +87,8 @@ export default function SectionMoment() {
         >
           <div className="inline-block bg-orange/10 border border-orange/30 rounded-2xl px-8 py-5 max-w-2xl">
             <p className="text-cream/90 text-lg font-medium">
-              The Playbook is how you turn a successful pilot into an{" "}
-              <span className="text-orange">organisation-wide capability.</span>
+              The Playbook is how you turn a successful pilot into{" "}
+              <span className="text-orange">an organisation that learns and operates with AI — at every level.</span>
             </p>
           </div>
         </motion.div>
