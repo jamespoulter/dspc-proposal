@@ -28,7 +28,7 @@ const team = [
   },
   {
     name: "Mimi Chan",
-    role: "Strategic Adviser",
+    role: "Strategic Planner",
     company: "The Liminal Group",
     bio: "Mimi brings extensive experience in go-to-market strategy and brand positioning for technology companies. As part of The Liminal Group's core team, she contributes deep expertise in helping technical companies build narratives that resonate with C-suite buyers.",
     photo: null,
