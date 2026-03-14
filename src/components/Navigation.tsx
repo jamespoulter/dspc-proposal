@@ -29,7 +29,7 @@ export default function Navigation({ activeSection, sections }: NavigationProps)
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Left: ThreePoint logo */}
         <div className="flex items-center gap-2">
-          <Image src="/threepoint-logo-transparent.png" alt="ThreePoint" width={120} height={34} className="h-7 w-auto object-contain" />
+          <Image src="/threepoint-logo-transparent.png" alt="ThreePoint" width={120} height={32} className="h-8 w-auto object-contain" />
         </div>
 
         {/* Centre: Nav links (desktop) */}
@@ -52,7 +52,7 @@ export default function Navigation({ activeSection, sections }: NavigationProps)
         {/* Right: Liminal partnership */}
         <div className="flex items-center gap-3">
           <span className="text-cream/40 text-xs hidden sm:block">In partnership with</span>
-          <Image src="/liminal-logo-white.png" alt="The Liminal Group" width={100} height={28} className="h-6 w-auto object-contain opacity-80" />
+          <Image src="/liminal-logo-white.png" alt="The Liminal Group" width={90} height={32} className="h-8 w-auto object-contain opacity-80" style={{ maxWidth: '90px' }} />
         </div>
       </div>
     </motion.header>

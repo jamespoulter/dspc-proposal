@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function SectionWelcome() {
   const scrollDown = () => {
@@ -39,18 +38,6 @@ export default function SectionWelcome() {
             Confidential Proposal
           </span>
           <div className="h-px w-8 bg-liminal-gold" />
-        </motion.div>
-
-        {/* Logo lockup */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="flex items-center justify-center gap-8 mb-12"
-        >
-          <Image src="/threepoint-logo-transparent.png" alt="ThreePoint" width={180} height={52} className="h-12 w-auto object-contain" />
-          <div className="w-px h-12 bg-liminal-gold opacity-60" />
-          <Image src="/liminal-logo-white.png" alt="The Liminal Group" width={180} height={52} className="h-10 w-auto object-contain" />
         </motion.div>
 
         {/* Headline */}
