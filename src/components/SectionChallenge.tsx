@@ -1,102 +1,110 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const challenges = [
-  {
-    number: "01",
-    title: "The Format Gap",
-    body: "Traditional documents — PDFs, slide decks, printed guides — were designed for a pre-AI world. They don't update, don't respond, and don't meet people where they are. If your organisation is using AI to work, your learning infrastructure needs to match.",
-    color: "orange",
-  },
-  {
-    number: "02",
-    title: "Depth by Function",
-    body: "A logistics engineer in Ansbach has different needs to a sales lead in Chicago. One playbook, one format, one level of depth doesn't serve either of them well. Real activation requires content that's modular, role-specific, and built to grow.",
-    color: "gold",
-  },
-  {
-    number: "03",
-    title: "Activation vs. Consumption",
-    body: "Reading about AI doesn't make anyone better at using it. The most effective learning combines context, worked examples, interactive tools, and real prompts — so people build capability by doing, not just by knowing.",
-    color: "orange",
-  },
+const today = [
+  "Dominant with audio engineering teams but invisible to C-suite",
+  "GTM motion works bottom-up through supply chain — doesn't reach CPOs or AI strategy leads",
+  'Positioning as a "DSP tool company" rather than an AI infrastructure platform',
+  "Website and messaging optimised for audio nerds, not product decision-makers",
+  "CTA Audio Board chairmanship under-leveraged for thought leadership",
+];
+
+const future = [
+  "Recognised as the essential infrastructure layer for AI-powered products",
+  'C-suite narrative: "What CUDA did for NVIDIA, Audio Weaver does for audio"',
+  "New GTM motion reaching CPOs, CTOs, and AI product leads directly",
+  "Repositioned brand, messaging, and web presence for the AI product era",
+  "Chin established as the definitive industry voice on audio + AI",
 ];
 
 export default function SectionChallenge() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      ref={containerRef}
-      className="min-h-screen flex flex-col items-center justify-center relative px-6 py-24 bg-navy-light overflow-hidden"
-    >
-      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-orange/[0.07] pointer-events-none" />
+    <section id="gap" className="py-24 bg-gradient-to-b from-navy to-teal/10 relative">
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-5xl z-10"
-      >
-        <div className="text-center mb-16">
-          <span className="text-orange text-sm font-medium tracking-widest uppercase mb-4 block">
-            The Challenge
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Your operations run on AI.
-            <span className="block text-orange">Your learning infrastructure doesn&apos;t — yet.</span>
-          </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto leading-relaxed">
-            Bosch has built something remarkable — a working AI programme with documented outcomes
-            across three domains. The knowledge is there. The gap is in how it gets shared, applied,
-            and built upon. That&apos;s not a knowledge problem. It&apos;s an infrastructure problem.
-          </p>
-        </div>
-
-        {/* Three challenge cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {challenges.map((challenge, index) => {
-            const isOrange = challenge.color === "orange";
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
-                className="bg-navy border border-cream/10 rounded-2xl p-8 hover:border-orange/30 transition-colors"
-              >
-                <div className={`text-5xl font-bold mb-4 ${isOrange ? "text-orange/30" : "text-gold/30"}`}>
-                  {challenge.number}
-                </div>
-                <h3 className={`font-bold text-xl mb-4 ${isOrange ? "text-orange" : "text-gold"}`}>
-                  {challenge.title}
-                </h3>
-                <p className="text-cream/70 leading-relaxed">{challenge.body}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Bridge callout */}
+      <div className="max-w-6xl mx-auto px-8">
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="border-l-4 border-orange pl-6 max-w-3xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <p className="text-xl text-cream/85 leading-relaxed">
-            The goal is to convert comprehensive project outcomes into a more accessible,
-            user-friendly format that Bosch employees can readily utilise — and that evolves
-            as your AI programme does.
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-orange" />
+            <span className="text-orange text-xs font-medium tracking-widest uppercase">The Strategic Imperative</span>
+          </div>
+          <h2 className="font-condensed text-6xl md:text-7xl font-black uppercase text-cream mb-6"
+            style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            The Gap
+          </h2>
+          <p className="text-cream/70 text-lg max-w-2xl leading-relaxed">
+            The distance between where DSP Concepts is today and where this programme takes you.
           </p>
-          <footer className="mt-3 text-orange font-medium text-sm tracking-wide">
-            — Bosch Project Brief, March 2026
-          </footer>
         </motion.div>
-      </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Today */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="bg-navy-light border border-cream/10 rounded-xl p-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-3 h-3 rounded-full bg-cream/30" />
+              <h3 className="text-cream/60 font-semibold text-sm uppercase tracking-wider">Where DSPC is today</h3>
+            </div>
+            <ul className="space-y-4">
+              {today.map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                  className="flex gap-3 text-cream/70 text-sm leading-relaxed"
+                >
+                  <span className="text-cream/30 mt-0.5 flex-shrink-0">—</span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Future */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="bg-teal/20 border border-liminal-gold/30 rounded-xl p-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-3 h-3 rounded-full bg-liminal-gold" />
+              <h3 className="text-liminal-gold font-semibold text-sm uppercase tracking-wider">Where this programme takes you</h3>
+            </div>
+            <ul className="space-y-4">
+              {future.map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+                  className="flex gap-3 text-cream text-sm leading-relaxed"
+                >
+                  <span className="text-liminal-gold mt-0.5 flex-shrink-0">→</span>
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,143 +1,171 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const phases = [
   {
-    number: "01",
-    label: "Targeting: Early April 2026 (E03.26)",
-    title: "Foundation & MVP",
+    label: "Phase 1",
+    title: "Discovery & Diagnosis",
+    weeks: "Weeks 1–4",
     color: "orange",
+    deliverable: "Strategic Positioning Brief — diagnosis, opportunities, recommended narrative architecture",
     items: [
-      "Discovery: Review all source documents (Bain decks, process maps, deep-dives)",
-      "Content architecture: Structure the full playbook into logical, navigable modules",
-      "Microsite build: Branded platform shell, navigation, PDF library, prompt examples",
-      "General Playbook: AI strategy overview, E2E reimagination methodology, key frameworks",
-      "G7-ready: polished, secure, and accessible for executive review",
+      "Stakeholder interviews: Chin + 3–4 DSPC leadership team members",
+      "Customer perception audit: 5–8 interviews with existing customers (audio engineers + their product leaders)",
+      "Competitor and landscape analysis: how adjacent players (Qualcomm AI, NVIDIA audio, Dolby) position",
+      "Audit of current website, pitch deck, sales materials, and Chin's public profile",
+      "CTA Audio Board opportunity mapping",
     ],
   },
   {
-    number: "02",
-    label: "Targeting: Q2 2026 (rolling)",
-    title: "Domain Modules",
-    color: "gold",
+    label: "Phase 2",
+    title: "Build & Create",
+    weeks: "Weeks 5–9",
+    color: "liminal-gold",
+    deliverable: "Messaging Bible, C-Suite Deck, Content Calendar, Vertical Playbook, Sales Pack",
     items: [
-      "Three standalone domain chapters: Manufacturing (Ansbach), Sales (RFQ), Logistics (Homburg)",
-      "Each module: process maps, case studies, team exercises, workshop outlines, implementation guides",
-      "Audio versions of all long-form content",
-      "Internal comms toolkit: email templates, team briefing guides, adoption resources",
+      "Core messaging framework: positioning statement, elevator pitch, tagline options, proof points",
+      "Website messaging overhaul: page-by-page copy recommendations (or full rewrite if scope allows)",
+      'New C-suite pitch deck: "Audio is the Missing Sense for AI" — designed for CPOs/CTOs, not engineers',
+      "Thought leadership content plan: 6-month calendar for Chin (LinkedIn, speaking, media, CTA leverage)",
+      "Vertical expansion playbook: prioritised market map with entry narratives per vertical",
+      "Sales enablement pack: one-pagers, objection handlers, 'Why Audio Matters' white paper outline",
     ],
   },
   {
-    number: "03",
-    label: "Targeting: Q2–Q3 2026",
-    title: "Interactive Layer",
-    color: "orange",
+    label: "Phase 3",
+    title: "Launch & Amplify",
+    weeks: "Weeks 10–12",
+    color: "teal",
+    deliverable: "Team Workshop, Launch Assets, 90-Day Roadmap",
     items: [
-      "RAG AI chatbot: trained on all playbook content, tested with Bosch use cases",
-      "Video explainers: scripted and produced for each major module",
-      "Advanced prompt library: expanded, tested, categorised by function and use case",
-      "Full GitHub handover (if selected) or ongoing hosting + update management",
-      "Modular update workflow: process for adding new chapters as Bosch's AI programme grows",
+      "Internal rollout: workshop with DSPC sales and marketing teams to embed new messaging",
+      "Chin's thought leadership launch: first 3 LinkedIn posts, speaker bio refresh, media pitch list",
+      "Website go-live support: review and QA of updated web copy",
+      "90-day amplification roadmap: what happens after the sprint ends",
+      "Optional: identify and brief a PR/comms partner for ongoing media relations",
     ],
   },
 ];
 
-const timeline = [
-  { date: "March", label: "Discovery + Architecture" },
-  { date: "April", label: "MVP Live — G7 ready", highlight: true },
-  { date: "May–June", label: "Domain Modules" },
-  { date: "July–Sept", label: "Interactive Layer" },
-  { date: "Ongoing", label: "Modular updates" },
+const events = [
+  {
+    week: "Week 2",
+    title: "Discovery Workshop",
+    detail: "Virtual (or Santa Clara if preferred) — Half-day facilitated session with Chin + leadership team",
+  },
+  {
+    week: "Week 7",
+    title: "Messaging & Strategy Review",
+    detail: "Virtual — Present draft messaging framework and C-suite deck for feedback",
+  },
+  {
+    week: "Week 11",
+    title: "Launch Workshop",
+    detail: "Virtual (or Santa Clara) — Half-day internal rollout with sales and marketing teams",
+  },
 ];
+
+const colorMap: Record<string, string> = {
+  orange: "border-orange text-orange bg-orange/10",
+  "liminal-gold": "border-liminal-gold text-liminal-gold bg-liminal-gold/10",
+  teal: "border-teal text-teal bg-teal/30",
+};
+
+const dotColorMap: Record<string, string> = {
+  orange: "bg-orange",
+  "liminal-gold": "bg-liminal-gold",
+  teal: "bg-teal",
+};
 
 export default function SectionApproach() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      ref={containerRef}
-      className="min-h-screen flex flex-col items-center justify-center relative px-6 py-24 bg-navy-light overflow-hidden"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-6xl z-10"
-      >
-        <div className="text-center mb-16">
-          <span className="text-orange text-sm font-medium tracking-widest uppercase mb-4 block">
-            Our Approach
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Tiered. Modular.
-            <span className="block text-orange">Built for how you actually work.</span>
+    <section id="programme" className="py-24 bg-gradient-to-b from-teal/5 to-navy relative">
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange" />
+
+      <div className="max-w-6xl mx-auto px-8">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-orange" />
+            <span className="text-orange text-xs font-medium tracking-widest uppercase">12-Week Sprint</span>
+          </div>
+          <h2 className="font-condensed text-6xl md:text-7xl font-black uppercase text-cream mb-6"
+            style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            The Programme
           </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            We work in three phases — each one delivering standalone value, each one building on the last.
-            The MVP is live for your G7 meeting. The full platform grows through Q2 and Q3.
+          <p className="text-cream/70 text-lg max-w-3xl leading-relaxed">
+            A 12-week strategic sprint in three phases — designed to deliver repositioned messaging, new GTM materials, and a thought leadership launchpad.
           </p>
-        </div>
+        </motion.div>
 
         {/* Phase cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {phases.map((phase, index) => {
-            const isOrange = phase.color === "orange";
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
-                className="bg-navy border border-cream/10 rounded-2xl p-8"
-              >
-                <div className={`text-6xl font-bold mb-2 ${isOrange ? "text-orange/20" : "text-gold/20"}`}>
-                  {phase.number}
-                </div>
-                <p className={`text-xs font-medium tracking-wide mb-3 ${isOrange ? "text-orange" : "text-gold"}`}>
-                  {phase.label}
-                </p>
-                <h3 className="text-cream font-bold text-xl mb-5">{phase.title}</h3>
-                <ul className="space-y-3">
-                  {phase.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${isOrange ? "bg-orange" : "bg-gold"}`} />
-                      <span className="text-cream/65 text-sm leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {phases.map((phase, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              className="bg-navy-light border border-cream/10 rounded-xl p-6 hover:border-orange/20 transition-colors"
+            >
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-medium mb-4 ${colorMap[phase.color]}`}>
+                <span>{phase.label}</span>
+                <span>·</span>
+                <span>{phase.weeks}</span>
+              </div>
+              <h3 className="text-cream font-bold text-lg mb-4">{phase.title}</h3>
+              <ul className="space-y-3 mb-6">
+                {phase.items.map((item, j) => (
+                  <li key={j} className="flex gap-2 text-cream/60 text-xs leading-relaxed">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColorMap[phase.color]}`} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="border-t border-cream/10 pt-4">
+                <p className="text-xs text-cream/40 uppercase tracking-wider mb-1">Deliverable</p>
+                <p className="text-xs text-cream/70 leading-relaxed">{phase.deliverable}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Timeline */}
+        {/* Key Events */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="bg-navy border border-cream/10 rounded-2xl p-8"
+          transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <p className="text-gold text-sm font-medium tracking-widest uppercase mb-6 text-center">Timeline</p>
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 relative">
-            {/* Connecting line */}
-            <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-cream/10 z-0" />
-            {timeline.map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center z-10 flex-1">
-                <div className={`w-3 h-3 rounded-full mb-3 ${item.highlight ? "bg-orange ring-4 ring-orange/20" : "bg-cream/30"}`} />
-                <p className={`text-sm font-semibold mb-1 ${item.highlight ? "text-orange" : "text-cream/60"}`}>
-                  {item.date}
-                </p>
-                <p className={`text-xs leading-tight ${item.highlight ? "text-cream" : "text-cream/50"}`}>
-                  {item.label}
-                </p>
+          <h3 className="text-cream/60 text-xs font-medium tracking-widest uppercase mb-6 flex items-center gap-3">
+            <div className="h-px w-8 bg-cream/30" />
+            Key Events
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4">
+            {events.map((event, i) => (
+              <div key={i} className="flex gap-4 p-4 bg-teal/10 border border-teal/30 rounded-lg">
+                <div className="flex-shrink-0">
+                  <div className="text-liminal-gold font-bold text-xs uppercase">{event.week}</div>
+                </div>
+                <div>
+                  <div className="text-cream font-semibold text-sm mb-1">{event.title}</div>
+                  <div className="text-cream/50 text-xs leading-relaxed">{event.detail}</div>
+                </div>
               </div>
             ))}
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

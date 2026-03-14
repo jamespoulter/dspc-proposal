@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const barlow = Barlow({
+  variable: "--font-barlow",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+});
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  subsets: ["latin"],
+  weight: ["900"],
 });
 
 export const metadata: Metadata = {
-  title: "Bosch AI Playbook Programme | ThreePoint",
-  description: "A transformational AI strategy programme to equip Bosch with the frameworks, skills, and confidence to lead in the AI era",
+  title: "DSP Concepts AI Positioning Programme | ThreePoint × The Liminal Group",
+  description: "A strategic positioning and go-to-market programme to establish DSP Concepts as the essential infrastructure layer for AI-powered products.",
   icons: {
     icon: "/threepoint-icon.png",
     shortcut: "/threepoint-icon.png",
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jakarta.variable} font-sans antialiased bg-navy text-cream`}>
+      <body className={`${barlow.variable} ${barlowCondensed.variable} font-sans antialiased bg-navy text-cream`}>
         {children}
         <Analytics />
       </body>

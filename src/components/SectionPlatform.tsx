@@ -1,124 +1,122 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Globe, Download, Zap, Video, Headphones, Bot } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
 
-const features = [
+const pillars = [
   {
-    icon: Globe,
-    title: "Dynamic Microsite",
-    body: "A fully branded, secure web platform — hosted on ThreePoint infrastructure or handed over as a GitHub project for internal Bosch deployment. Modular architecture allows new chapters to be added throughout 2026 without rebuilding.",
-    color: "orange",
+    number: "01",
+    title: "Reposition the Brand",
+    short: 'Move from "audio DSP tooling" to "the infrastructure layer for intelligent audio"',
+    detail:
+      "Comprehensive messaging overhaul — from tagline and elevator pitch to website copy, sales decks, and investor materials. Every touchpoint reframed around the AI product maker, not the audio engineer. The CUDA analogy becomes the organising narrative.",
   },
   {
-    icon: Download,
-    title: "Downloadable Resource Library",
-    body: "PDF versions of all core materials — RACI frameworks, process maps, domain guides, workshop outlines — ready to save, print, and use offline.",
-    color: "gold",
+    number: "02",
+    title: "Elevate Chin as Industry Voice",
+    short: "Establish Chin Beckmann as the go-to authority on audio infrastructure for AI",
+    detail:
+      "Speaker positioning strategy, thought leadership content calendar, CTA Board leverage plan, media and podcast placement, LinkedIn presence overhaul. Chin already has the credentials and the platform — this programme gives her the amplification strategy.",
   },
   {
-    icon: Zap,
-    title: "AI Prompt Library",
-    body: "Curated, tested example prompts mapped to real Bosch use cases across Manufacturing, Sales, and Logistics. Ready to paste into ChatGPT, Copilot, or your preferred AI tool.",
-    color: "orange",
+    number: "03",
+    title: "Open the C-Suite Door",
+    short: "Build a GTM narrative that reaches CPOs, CTOs, and AI product strategy leads",
+    detail:
+      "New messaging framework designed for non-audio executives. Reframe Audio Weaver's value proposition in the language of AI product architecture, time-to-market, and platform scalability — not DSP algorithms. Create C-suite-ready collateral distinct from the engineering sales motion.",
   },
   {
-    icon: Video,
-    title: "Video Explainers",
-    body: "Short, scripted video summaries of each major module — breaking complex frameworks into 3–5 minute watch-and-apply content. Ideal for teams who learn visually or need a quick refresher.",
-    color: "gold",
+    number: "04",
+    title: "Expand into AI Product Verticals",
+    short: "Identify and prioritise the highest-value new verticals for agentic AI audio",
+    detail:
+      "Market mapping across robotics, AR/VR, smart home, hearables, conferencing, automotive AI, and medical devices. Score each vertical by TAM, buyer readiness, DSPC existing traction, and competitive gap. Deliver a prioritised vertical expansion playbook with entry strategies.",
   },
   {
-    icon: Headphones,
-    title: "Audio Versions",
-    body: "Narrated audio of longer-form content — for on-the-go consumption during commutes, travel, or time between meetings. No screen required.",
-    color: "orange",
-  },
-  {
-    icon: Bot,
-    title: "RAG-Powered AI Assistant",
-    body: "A custom chatbot trained on all playbook content. Ask \"What's the RFQ process redesign approach?\" or \"Show me the Ansbach implementation roadmap\" — and get precise, sourced answers from the playbook itself.",
-    color: "gold",
+    number: "05",
+    title: "Arm the Sales Team",
+    short: "Equip sales with materials, narratives, and proof points that land with AI buyers",
+    detail:
+      'New pitch deck, objection-handling guide, case study framework, competitive positioning one-pagers, and a "Why Audio Matters for AI" white paper designed to be shared by champions inside target accounts. Sales enablement that bridges the gap between engineering love and C-suite budget approval.',
   },
 ];
 
 export default function SectionPlatform() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      ref={containerRef}
-      className="min-h-screen flex flex-col items-center justify-center relative px-6 py-24 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-navy" />
+    <section id="delivers" className="py-24 bg-navy relative">
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-liminal-gold" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-6xl z-10"
-      >
-        <div className="text-center mb-16">
-          <span className="text-gold text-sm font-medium tracking-widest uppercase mb-4 block">
-            The Platform
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Not just a document.
-            <span className="block text-orange">A living digital playbook.</span>
-          </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            We&apos;re proposing a purpose-built digital platform that brings your AI transformation
-            knowledge to life — accessible, modular, and designed for Bosch employees at every level.
-          </p>
-        </div>
-
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            const isOrange = feature.color === "orange";
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-                className="bg-navy-light border border-cream/10 rounded-2xl p-6 hover:border-orange/30 transition-colors group"
-              >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${isOrange ? "bg-orange/10" : "bg-gold/10"}`}>
-                  <Icon className={`w-6 h-6 ${isOrange ? "text-orange" : "text-gold"}`} />
-                </div>
-                <h3 className="text-cream font-semibold text-lg mb-3">{feature.title}</h3>
-                <p className="text-cream/65 text-sm leading-relaxed">{feature.body}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Hosting callout */}
+      <div className="max-w-4xl mx-auto px-8">
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="bg-navy-light border border-cream/10 rounded-2xl p-8 max-w-3xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <p className="text-gold font-semibold mb-4 text-sm tracking-widest uppercase">Two Deployment Paths</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="text-cream font-semibold mb-2">ThreePoint-Hosted</h4>
-              <p className="text-cream/65 text-sm leading-relaxed">We manage the platform, updates, and security. You access it via a Bosch-branded subdomain.</p>
-            </div>
-            <div>
-              <h4 className="text-cream font-semibold mb-2">GitHub Handover</h4>
-              <p className="text-cream/65 text-sm leading-relaxed">Full codebase delivered to your team for internal deployment behind Bosch&apos;s own infrastructure.</p>
-            </div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-liminal-gold" />
+            <span className="text-liminal-gold text-xs font-medium tracking-widest uppercase">C-Suite Business Value</span>
           </div>
+          <h2 className="font-condensed text-6xl md:text-7xl font-black uppercase text-cream mb-6"
+            style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            What This Delivers
+          </h2>
+          <p className="text-cream/70 text-lg leading-relaxed">
+            Five strategic pillars that translate repositioning into measurable business impact.
+          </p>
         </motion.div>
-      </motion.div>
 
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-orange/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="space-y-3">
+          {pillars.map((pillar, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="border border-cream/10 rounded-xl overflow-hidden hover:border-orange/30 transition-colors"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full flex items-center gap-6 p-6 text-left group"
+              >
+                <span className="font-condensed text-3xl font-black text-orange/40 group-hover:text-orange transition-colors flex-shrink-0"
+                  style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+                  {pillar.number}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-cream font-semibold text-base mb-1">{pillar.title}</h3>
+                  <p className="text-cream/50 text-sm leading-relaxed">{pillar.short}</p>
+                </div>
+                <div className={`flex-shrink-0 w-6 h-6 rounded-full border border-cream/20 flex items-center justify-center transition-transform ${openIndex === i ? "rotate-45" : ""}`}>
+                  <span className="text-cream/60 text-xs">+</span>
+                </div>
+              </button>
+
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 pl-20 border-t border-cream/5">
+                      <p className="text-cream/70 text-sm leading-relaxed pt-4">{pillar.detail}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function PasswordGate() {
   const [password, setPassword] = useState("");
@@ -11,7 +12,7 @@ export default function PasswordGate() {
   const router = useRouter();
 
   useEffect(() => {
-    const isAuthenticated = sessionStorage.getItem("bosch-auth");
+    const isAuthenticated = sessionStorage.getItem("dspc-auth");
     if (isAuthenticated === "true") {
       router.push("/proposal");
     } else {
@@ -21,8 +22,8 @@ export default function PasswordGate() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "bosch2026") {
-      sessionStorage.setItem("bosch-auth", "true");
+    if (password === "dspc2026") {
+      sessionStorage.setItem("dspc-auth", "true");
       router.push("/proposal");
     } else {
       setError(true);
@@ -43,80 +44,102 @@ export default function PasswordGate() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-navy px-6">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-navy px-6 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy via-teal/20 to-navy pointer-events-none" />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-md"
+        className="w-full max-w-md relative z-10"
       >
-        <div className="text-center mb-12">
+        {/* Logo lockup */}
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-block mb-6"
+            className="flex items-center justify-center gap-6 mb-6"
           >
-            <span className="text-gold text-sm font-medium tracking-widest uppercase">
-              Confidential Proposal
-            </span>
+            <Image src="/threepoint-logo-transparent.png" alt="ThreePoint" width={140} height={40} className="h-8 w-auto object-contain" />
+            <div className="w-px h-8 bg-liminal-gold opacity-60" />
+            <Image src="/liminal-logo-white.png" alt="The Liminal Group" width={140} height={40} className="h-7 w-auto object-contain" />
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold text-cream mb-4">
-            AI Playbook
-            <span className="block text-orange">Programme</span>
-          </h1>
-          <p className="text-cream/60 text-lg">
-            Prepared for Bosch by ThreePoint
-          </p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="text-liminal-gold text-xs font-medium tracking-widest uppercase mb-2"
+          >
+            Confidential Proposal
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="text-cream text-xl font-semibold mb-1"
+          >
+            DSP Concepts
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="text-cream/60 text-sm"
+          >
+            Prepared by ThreePoint × The Liminal Group
+          </motion.p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Form */}
+        <motion.form
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          onSubmit={handleSubmit}
+          className="space-y-4"
+        >
           <div>
-            <label htmlFor="password" className="block text-cream/80 text-sm mb-2">
-              Enter access code
+            <label className="block text-cream/60 text-xs tracking-wider uppercase mb-2">
+              Access Code
             </label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full px-4 py-4 bg-navy-light border-2 rounded-lg text-cream placeholder-cream/40 focus:outline-none transition-colors ${
-                error
-                  ? "border-red-500"
-                  : "border-cream/20 focus:border-orange"
+              placeholder="Enter access code"
+              className={`w-full bg-navy-light border px-4 py-3 rounded text-cream placeholder-cream/30 focus:outline-none focus:border-orange transition-colors ${
+                error ? "border-red-500" : "border-cream/20 focus:border-orange"
               }`}
-              placeholder="Enter password"
-              autoFocus
             />
             {error && (
               <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-red-400 text-sm mt-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-red-400 text-xs mt-2"
               >
-                Invalid access code
+                Incorrect access code. Please try again.
               </motion.p>
             )}
           </div>
 
-          <motion.button
+          <button
             type="submit"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-4 bg-orange text-navy font-semibold rounded-lg hover:bg-orange/90 transition-colors"
+            className="w-full bg-orange text-navy font-semibold py-3 rounded hover:bg-orange/90 transition-colors tracking-wide"
           >
             Access Proposal
-          </motion.button>
-        </form>
+          </button>
+        </motion.form>
 
-        <p className="text-center text-cream/40 text-sm mt-8">
-          Contact <a href="mailto:jp@threepoint.io" className="text-orange hover:underline">jp@threepoint.io</a> for access
+        <p className="text-center text-cream/30 text-xs mt-8">
+          For access, contact{" "}
+          <a href="mailto:jp@threepoint.io" className="text-orange hover:underline">
+            jp@threepoint.io
+          </a>
         </p>
       </motion.div>
-
-      {/* Geometric accents */}
-      <div className="fixed top-0 right-0 w-96 h-96 bg-orange/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="fixed bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
     </main>
   );
 }

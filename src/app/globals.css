@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand Colors */
+  /* Base brand */
   --color-navy: #0f171f;
   --color-navy-light: #162231;
   --color-orange: #f46c42;
@@ -10,8 +10,14 @@
   --color-cream: #efd6bd;
   --color-indigo: #7902f3;
 
+  /* Liminal accents */
+  --color-teal: #1a4146;
+  --color-teal-light: #235059;
+  --color-liminal-gold: #be9947;
+
   /* Font */
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-barlow);
+  --font-condensed: var(--font-barlow-condensed);
 }
 
 :root {
@@ -43,7 +49,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d1f503;
+  background: #be9947;
 }
 
 /* Selection highlight */

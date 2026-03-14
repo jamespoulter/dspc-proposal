@@ -2,28 +2,27 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import SectionWelcome from "@/components/SectionWelcome";
 import SectionMoment from "@/components/SectionMoment";
 import SectionChallenge from "@/components/SectionChallenge";
 import SectionPlatform from "@/components/SectionPlatform";
 import SectionApproach from "@/components/SectionApproach";
-import SectionTeam from "@/components/SectionTeam";
 import SectionPricing from "@/components/SectionPricing";
+import SectionTeam from "@/components/SectionTeam";
 import SectionThreePoint from "@/components/SectionThreePoint";
 import SectionNextSteps from "@/components/SectionNextSteps";
 
 const sections = [
   { id: "welcome", label: "Welcome" },
-  { id: "moment", label: "Moment" },
-  { id: "challenge", label: "Challenge" },
-  { id: "platform", label: "Platform" },
-  { id: "approach", label: "Approach" },
-  { id: "team", label: "Team" },
+  { id: "moment", label: "Opportunity" },
+  { id: "gap", label: "The Gap" },
+  { id: "delivers", label: "Delivers" },
+  { id: "programme", label: "Programme" },
   { id: "pricing", label: "Pricing" },
-  { id: "threepoint", label: "ThreePoint" },
+  { id: "team", label: "Team" },
+  { id: "partners", label: "Partners" },
   { id: "nextsteps", label: "Next Steps" },
 ];
 
@@ -35,7 +34,7 @@ export default function ProposalPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const auth = sessionStorage.getItem("bosch-auth");
+    const auth = sessionStorage.getItem("dspc-auth");
     if (auth !== "true") {
       router.push("/");
     } else {
@@ -86,84 +85,55 @@ export default function ProposalPage() {
     );
   }
 
-  if (!isAuthenticated) {
-    return null;
-  }
+  if (!isAuthenticated) return null;
 
   return (
     <main className="relative bg-navy">
-      <Navigation activeSection={activeSection} sections={sections} clientName="Bosch" />
+      <Navigation activeSection={activeSection} sections={sections} />
 
-      {/* Side Navigation dots */}
-      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3">
+      {/* Side nav dots (desktop) */}
+      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-3">
         {sections.map((section) => (
           <a
             key={section.id}
             href={`#${section.id}`}
-            className="group flex items-center gap-3"
             title={section.label}
-          >
-            <span className="opacity-0 group-hover:opacity-100 text-cream/60 text-xs transition-opacity">
-              {section.label}
-            </span>
-            <motion.div
-              animate={{
-                scale: activeSection === section.id ? 1.5 : 1,
-                backgroundColor: activeSection === section.id ? "#f46c42" : "rgba(239, 214, 189, 0.3)",
-              }}
-              className="w-2 h-2 rounded-full"
-            />
-          </a>
+            onClick={(e) => { e.preventDefault(); document.getElementById(section.id)?.scrollIntoView({ behavior: "smooth" }); }}
+            className={`block w-2 h-2 rounded-full transition-all ${
+              activeSection === section.id
+                ? "bg-orange scale-125"
+                : "bg-cream/20 hover:bg-cream/50"
+            }`}
+          />
         ))}
       </nav>
 
-      <div id="welcome"><SectionWelcome /></div>
-      <div id="moment"><SectionMoment /></div>
-      <div id="challenge"><SectionChallenge /></div>
-      <div id="platform"><SectionPlatform /></div>
-      <div id="approach"><SectionApproach /></div>
-      <div id="team"><SectionTeam /></div>
-      <div id="pricing"><SectionPricing /></div>
-      <div id="threepoint"><SectionThreePoint /></div>
-      <div id="nextsteps"><SectionNextSteps /></div>
+      {/* Content */}
+      <div className="pt-16">
+        <SectionWelcome />
+        <SectionMoment />
+        <SectionChallenge />
+        <SectionPlatform />
+        <SectionApproach />
+        <SectionPricing />
+        <SectionTeam />
+        <SectionThreePoint />
+        <SectionNextSteps />
+      </div>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-cream/10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/threepoint-logo-transparent.png"
-                alt="ThreePoint Labs"
-                width={120}
-                height={35}
-                className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity"
-              />
-              <span className="text-cream/30 text-sm">|</span>
-              <span className="text-cream/40 text-sm">Confidential proposal prepared for Bosch</span>
-            </div>
-            <p className="text-cream/30 text-sm">&copy; {new Date().getFullYear()} ThreePoint Labs. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Back to Top */}
-      <AnimatePresence>
-        {showBackToTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-orange hover:bg-orange/90 rounded-full flex items-center justify-center shadow-lg shadow-orange/25 transition-all"
-            aria-label="Back to top"
-          >
-            <svg className="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {/* Back to top */}
+      {showBackToTop && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 bg-orange text-navy w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange/90 transition-colors shadow-lg"
+          aria-label="Back to top"
+        >
+          ↑
+        </motion.button>
+      )}
     </main>
   );
 }

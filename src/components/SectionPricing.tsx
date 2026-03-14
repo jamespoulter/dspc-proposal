@@ -1,156 +1,142 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, X } from "lucide-react";
 
 const tiers = [
   {
-    id: "foundation",
-    name: "Foundation",
-    subtitle: "G7-Ready Playbook",
-    price: "From $30,000",
-    timeline: "3–4 weeks",
+    tier: "Bronze",
+    name: "Positioning Sprint",
+    price: "$45,000",
+    duration: "6 weeks",
     recommended: false,
+    note: "Entry-level scope",
     color: "cream",
     includes: [
-      "Discovery & document review (all Bain source materials)",
-      "Content architecture — full playbook structure mapped",
-      "Microsite build — branded, secure, navigable",
-      "General Playbook section — AI strategy, E2E methodology, key frameworks",
-      "PDF download library (all core materials)",
-      "Prompt library — starter set of tested AI prompts (10–15 examples)",
-      "ThreePoint-hosted OR GitHub handover",
-      "G7 executive meeting ready",
-    ],
-    excludes: [
-      "Domain modules",
-      "Audio narrations",
-      "Video explainers",
-      "RAG chatbot",
+      "Stakeholder interviews (Chin + 2 others)",
+      "Competitor landscape audit",
+      "Strategic Positioning Brief",
+      "Core messaging framework (positioning, pitch, tagline)",
+      "1 × C-suite pitch deck",
+      "2 × advisory calls post-delivery",
     ],
   },
   {
-    id: "complete",
-    name: "Complete Playbook",
-    subtitle: "Full Knowledge Transfer Platform",
-    price: "From $60,000",
-    timeline: "10–12 weeks",
-    recommended: true,
-    color: "orange",
-    includes: [
-      "Everything in Foundation, plus:",
-      "Three domain modules — Manufacturing, Sales, Logistics",
-      "Team exercises and workshop outlines per domain",
-      "RACI frameworks and implementation guides",
-      "Expanded prompt library — 30–50 tested examples across all domains",
-      "Audio narrations of all long-form content",
-      "Internal comms toolkit (adoption emails, briefing templates, team guides)",
-    ],
-    excludes: [
-      "RAG chatbot",
-      "Video production",
-    ],
-  },
-  {
-    id: "full",
-    name: "Full Interactive Platform",
-    subtitle: "The Living Playbook",
-    price: "From $90,000",
-    timeline: "16–20 weeks",
+    tier: "Silver",
+    name: "Full Repositioning",
+    price: "$82,000",
+    duration: "12 weeks",
     recommended: false,
-    color: "gold",
+    note: "Comprehensive scope",
+    color: "cream",
     includes: [
-      "Everything in Complete Playbook, plus:",
-      "RAG-powered AI chatbot — trained on all content, tested, deployed",
-      "Video explainers — scripted and produced (6–8 videos)",
-      "Advanced prompt library — 50+ prompts, categorised, regularly updated",
-      "Ongoing update mechanism — add new chapters without a rebuild",
-      "12-month hosting & maintenance (if ThreePoint-hosted)",
-      "Full GitHub handover package (if internal deployment selected)",
+      "All Bronze deliverables, plus:",
+      "Customer perception audit (5–8 interviews)",
+      "Website messaging overhaul (full copy recommendations)",
+      "Thought leadership content plan for Chin (6-month calendar)",
+      "Vertical expansion playbook",
+      "Sales enablement pack (one-pagers, white paper outline)",
+      "Internal launch workshop",
+      "Monthly advisory call for 3 months post-delivery",
     ],
-    excludes: [],
+  },
+  {
+    tier: "Gold",
+    name: "Repositioning + Amplification",
+    price: "$120,000",
+    duration: "12 weeks + 3-month amplification",
+    recommended: true,
+    note: "Maximum impact",
+    color: "liminal-gold",
+    includes: [
+      "All Silver deliverables, plus:",
+      "Full website copy rewrite (not just recommendations)",
+      '"Why Audio Matters for AI" white paper (full production)',
+      "Chin's first 6 LinkedIn thought leadership posts (ghostwritten)",
+      "Speaker positioning strategy + event target list",
+      "CTA Audio Board leverage plan",
+      "PR/comms partner briefing and handover",
+      "90-day amplification roadmap with weekly check-ins",
+      "Ongoing advisory access through Month 6",
+    ],
   },
 ];
 
+const comparisonRows = [
+  { feature: "Duration", bronze: "6 weeks", silver: "12 weeks", gold: "12 wks + 3 mths" },
+  { feature: "Customer interviews", bronze: "—", silver: "5–8", gold: "5–8" },
+  { feature: "Website copy", bronze: "—", silver: "Recommendations", gold: "Full rewrite" },
+  { feature: "Thought leadership", bronze: "—", silver: "Content plan", gold: "Plan + 6 posts" },
+  { feature: "Sales enablement", bronze: "—", silver: "✓", gold: "✓ + white paper" },
+  { feature: "Ongoing advisory", bronze: "2 calls", silver: "3 months", gold: "6 months" },
+];
+
 export default function SectionPricing() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      ref={containerRef}
-      className="min-h-screen flex flex-col items-center justify-center relative px-6 py-24 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-navy" />
+    <section id="pricing" className="py-24 bg-gradient-to-b from-navy to-teal/10 relative">
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-liminal-gold" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-6xl z-10"
-      >
-        <div className="text-center mb-16">
-          <span className="text-gold text-sm font-medium tracking-widest uppercase mb-4 block">
-            Investment
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-cream mb-6">
-            Three tiers.
-            <span className="block text-orange">One outcome.</span>
+      <div className="max-w-6xl mx-auto px-8">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-liminal-gold" />
+            <span className="text-liminal-gold text-xs font-medium tracking-widest uppercase">Investment Options</span>
+          </div>
+          <h2 className="font-condensed text-6xl md:text-7xl font-black uppercase text-cream mb-4"
+            style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+            Choose Your Level
           </h2>
-          <p className="text-xl text-cream/75 font-normal max-w-3xl mx-auto">
-            Each tier delivers standalone value. Together, they build a complete, living AI resource platform.
-            We recommend starting with the Foundation tier to hit your April deadline, then building the rest through Q2.
-          </p>
-        </div>
+          <p className="text-cream/70 text-lg mb-2">Three tiers designed to match your ambition and timeline.</p>
+          <p className="text-cream/40 text-sm">All prices exclude tax. Custom packages available on request.</p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {tiers.map((tier, index) => (
+        {/* Tier cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {tiers.map((tier, i) => (
             <motion.div
-              key={tier.id}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
-              className={`relative bg-navy-light rounded-2xl p-8 flex flex-col ${
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className={`relative rounded-xl border p-7 ${
                 tier.recommended
-                  ? "border-2 border-orange ring-4 ring-orange/10"
-                  : "border border-cream/10"
+                  ? "border-liminal-gold bg-teal/15 shadow-lg shadow-liminal-gold/10"
+                  : "border-cream/10 bg-navy-light"
               }`}
             >
               {tier.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-orange text-navy text-xs font-bold px-4 py-1.5 rounded-full tracking-wide uppercase">
-                    Recommended
-                  </span>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-liminal-gold text-navy text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                  Recommended
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className={`text-xl font-bold mb-1 ${
-                  tier.color === "orange" ? "text-orange" :
-                  tier.color === "gold" ? "text-gold" : "text-cream"
-                }`}>
-                  {tier.name}
-                </h3>
-                <p className="text-cream/60 text-sm">{tier.subtitle}</p>
+                <p className="text-cream/50 text-xs uppercase tracking-wider mb-1">{tier.tier}</p>
+                <h3 className="text-cream font-bold text-xl mb-3">{tier.name}</h3>
+                <div className="font-condensed text-4xl font-black text-orange mb-1"
+                  style={{ fontFamily: "var(--font-barlow-condensed)" }}>
+                  {tier.price}
+                </div>
+                <p className="text-cream/50 text-sm">{tier.duration}</p>
               </div>
 
-              <div className="mb-6 pb-6 border-b border-cream/10">
-                <div className="text-3xl font-bold text-cream mb-1">{tier.price}</div>
-                <div className="text-cream/50 text-sm">{tier.timeline}</div>
-              </div>
-
-              <ul className="space-y-3 flex-1 mb-6">
-                {tier.includes.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-orange mt-0.5 flex-shrink-0" />
-                    <span className="text-cream/75 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-                {tier.excludes.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <X className="w-4 h-4 text-cream/25 mt-0.5 flex-shrink-0" />
-                    <span className="text-cream/35 text-sm">{item}</span>
+              <ul className="space-y-3 mb-6">
+                {tier.includes.map((item, j) => (
+                  <li key={j} className={`flex gap-2 text-sm leading-relaxed ${j === 0 && item.includes("plus") ? "text-cream/40 text-xs italic" : "text-cream/70"}`}>
+                    {j === 0 && item.includes("plus") ? null : (
+                      <span className={`mt-1 flex-shrink-0 ${tier.recommended ? "text-liminal-gold" : "text-cream/30"}`}>✓</span>
+                    )}
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -158,20 +144,40 @@ export default function SectionPricing() {
           ))}
         </div>
 
-        {/* Important note */}
+        {/* Comparison table */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="bg-navy-light border border-cream/10 rounded-xl px-8 py-5 max-w-3xl mx-auto text-center"
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="bg-navy-light rounded-xl border border-cream/10 overflow-hidden"
         >
-          <p className="text-cream/70 text-sm leading-relaxed">
-            Pricing is based on the scope described above. Final investment will be confirmed following
-            document review and a short scoping call.{" "}
-            <span className="text-cream/90">We want to give you an accurate number — not a padded estimate.</span>
-          </p>
+          <div className="p-4 border-b border-cream/10">
+            <h3 className="text-cream/60 text-xs font-medium tracking-widest uppercase">Feature Comparison</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-cream/10">
+                  <th className="text-left p-4 text-cream/40 text-xs uppercase tracking-wider">Feature</th>
+                  <th className="text-center p-4 text-cream/60 text-xs font-semibold uppercase">Bronze</th>
+                  <th className="text-center p-4 text-cream/60 text-xs font-semibold uppercase">Silver</th>
+                  <th className="text-center p-4 text-liminal-gold text-xs font-semibold uppercase">Gold ★</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row, i) => (
+                  <tr key={i} className={`border-b border-cream/5 ${i % 2 === 0 ? "bg-cream/2" : ""}`}>
+                    <td className="p-4 text-cream/60 text-sm">{row.feature}</td>
+                    <td className="p-4 text-center text-cream/50 text-sm">{row.bronze}</td>
+                    <td className="p-4 text-center text-cream/70 text-sm">{row.silver}</td>
+                    <td className="p-4 text-center text-liminal-gold text-sm font-medium">{row.gold}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
